@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/admin-responsive.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
 <style>
@@ -205,9 +206,12 @@ Demo: admin / password123
 </div>
 </div>
 </div>
-</div>
 </header>
 
+<!-- Mobile Sidebar Overlay -->
+<div id="sidebarOverlay" class="lg:hidden"></div>
+
+<!-- Sidebar -->
 <!-- Sidebar -->
 <aside id="sidebar" class="admin-sidebar fixed left-0 top-16 bottom-0 w-64 bg-white shadow-lg border-r border-gray-200 z-30">
 <nav class="p-4 space-y-2">
@@ -306,8 +310,18 @@ Demo: admin / password123
 
 <!-- Recent Activity -->
 <div class="bg-white rounded-lg shadow-sm border">
-<div class="p-6 border-b border-gray-200">
+<div class="p-6 border-b border-gray-200 flex justify-between items-center">
 <h3 class="text-lg font-semibold text-gray-800">Recent Activity</h3>
+<div class="flex space-x-2">
+    <button onclick="portfolioAdmin.loadDemoData()" 
+            class="btn-secondary px-3 py-2 rounded-button text-white text-sm">
+        <i class="ri-database-line mr-1"></i>Demo Data
+    </button>
+    <button onclick="portfolioAdmin.syncToPortfolio()" 
+            class="btn-primary px-4 py-2 rounded-button text-white text-sm">
+        <i class="ri-refresh-line mr-2"></i>Sync to Portfolio
+    </button>
+</div>
 </div>
 <div class="p-6">
 <div id="recentActivity" class="space-y-4">

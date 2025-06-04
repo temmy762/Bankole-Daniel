@@ -15,8 +15,79 @@ class PortfolioManager {
     }    init() {
         this.loadProjects();
         this.setupEventListeners();
-        this.setupModal();
-        this.setupAnimations();
+        this.setupModal();        this.setupAnimations();
+        this.setupAdminDataSync();
+        this.setupMobileMenu();
+    }
+
+    // Setup mobile menu functionality
+    setupMobileMenu() {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.contains('opacity-100');
+                
+                if (isOpen) {
+                    // Close menu
+                    mobileMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'invisible', '-translate-y-full');
+                    mobileMenuBtn.querySelector('i').className = 'ri-menu-line ri-lg';
+                } else {
+                    // Open menu
+                    mobileMenu.classList.remove('opacity-0', 'invisible', '-translate-y-full');
+                    mobileMenu.classList.add('opacity-100', 'visible', 'translate-y-0');
+                    mobileMenuBtn.querySelector('i').className = 'ri-close-line ri-lg';
+                }
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    mobileMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'invisible', '-translate-y-full');
+                    mobileMenuBtn.querySelector('i').className = 'ri-menu-line ri-lg';
+                }
+            });
+
+            // Close menu on window resize if opened
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    mobileMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'invisible', '-translate-y-full');
+                    mobileMenuBtn.querySelector('i').className = 'ri-menu-line ri-lg';
+                }
+            });
+        }
+    }
+
+    // Setup live data sync with admin system
+    setupAdminDataSync() {
+        // Listen for admin data updates
+        window.addEventListener('portfolioDataUpdated', (event) => {
+            console.log('📡 Received updated data from admin system');
+            this.projects = event.detail.projects || [];
+            this.filteredProjects = [...this.projects];
+            this.currentPage = 1;
+            this.renderProjects();
+            this.updatePortfolioStats();
+        });
+
+        // Check for existing synced data
+        const syncedData = localStorage.getItem('portfolioSync');
+        if (syncedData) {
+            try {
+                const data = JSON.parse(syncedData);
+                if (data.projects && data.projects.length > 0) {
+                    console.log('📊 Loading data from admin system');
+                    this.projects = data.projects;
+                    this.filteredProjects = [...this.projects];
+                }
+            } catch (e) {
+                console.warn('Failed to load synced data, using sample data');
+            }
+        }
     }
 
     // Load projects from admin system or use sample data
@@ -494,6 +565,11 @@ class PortfolioManager {
             }
             filterInfo.textContent = info;
         }
+    }    // Update portfolio statistics on main page (now removed/unused)
+    updatePortfolioStats() {
+        // This function is kept for backward compatibility but no longer used
+        // Counter section has been removed
+        console.log('ℹ️ updatePortfolioStats: Counter section has been removed');
     }
 
     setupAnimations() {
@@ -888,3 +964,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for global access
 window.portfolioManager = portfolioManager;
+
+//# sourceMappingURL=portfolio.js.map

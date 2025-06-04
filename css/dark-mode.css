@@ -1,0 +1,196 @@
+/* Dark Mode Styles */
+
+/* Base dark mode styles for the HTML element */
+.dark {
+    color-scheme: dark;
+}
+
+/* Body and background colors */
+.dark body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Headers */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #ffffff;
+}
+
+/* Background colors */
+.dark .bg-white {
+    background-color: #1e1e1e !important;
+}
+
+.dark .bg-gray-50 {
+    background-color: #121212 !important;
+}
+
+.dark .bg-gray-100 {
+    background-color: #1a1a1a !important;
+}
+
+.dark .bg-gray-200 {
+    background-color: #252525 !important;
+}
+
+/* Text colors */
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900,
+.dark .text-secondary {
+    color: #d0d0d0 !important;
+}
+
+/* Border colors */
+.dark .border-gray-100,
+.dark .border-gray-200 {
+    border-color: #2d2d2d !important;
+}
+
+/* Shadow adjustments */
+.dark .shadow-sm,
+.dark .shadow,
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-xl {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Inputs and form elements */
+.dark input,
+.dark textarea,
+.dark select {
+    background-color: #252525 !important;
+    color: #e0e0e0 !important;
+    border-color: #3d3d3d !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+    color: #8c8c8c !important;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+    border-color: var(--primary-color, #0F9D58) !important;
+}
+
+/* Cards and containers */
+.dark .card,
+.dark .container-bg {
+    background-color: #252525 !important;
+    border-color: #3d3d3d !important;
+}
+
+/* Portfolio specific styles */
+.dark .filter-btn {
+    background-color: #2d2d2d !important;
+    border-color: #3d3d3d !important;
+    color: #d0d0d0 !important;
+}
+
+.dark .filter-btn.active {
+    background-color: var(--primary-color, #0F9D58) !important;
+    color: #ffffff !important;
+}
+
+.dark .view-toggle-btn {
+    background-color: #2d2d2d !important;
+    border-color: #3d3d3d !important;
+    color: #d0d0d0 !important;
+}
+
+.dark .view-toggle-btn.active {
+    background-color: var(--primary-color, #0F9D58) !important;
+    color: #ffffff !important;
+}
+
+.dark .project-card {
+    background-color: #252525 !important;
+    border-color: #3d3d3d !important;
+}
+
+/* Navigation and header */
+.dark header {
+    background-color: #1a1a1a !important;
+    border-color: #2d2d2d !important;
+}
+
+.dark nav {
+    background-color: #1a1a1a !important;
+}
+
+.dark .nav-link {
+    color: #d0d0d0 !important;
+}
+
+.dark .nav-link:hover,
+.dark .nav-link.active {
+    color: var(--primary-color, #0F9D58) !important;
+}
+
+/* Mobile menu */
+.dark #mobileMenu {
+    background-color: #1a1a1a !important;
+    border-color: #2d2d2d !important;
+}
+
+/* Footer */
+.dark footer {
+    background-color: #111111 !important;
+}
+
+/* Dark mode toggle button */
+.dark #themeToggle {
+    background-color: #2d2d2d !important;
+    border-color: #3d3d3d !important;
+}
+
+/* Filter section */
+.dark .py-8.bg-white {
+    background-color: rgba(30, 30, 30, 0.95) !important;
+    border-color: #2d2d2d !important;
+}
+
+/* Custom primary color elements with opacity */
+.dark .bg-primary\/5 {
+    background-color: rgba(15, 157, 88, 0.05) !important;
+}
+
+.dark .bg-primary\/10 {
+    background-color: rgba(15, 157, 88, 0.1) !important;
+}
+
+.dark .bg-primary\/20 {
+    background-color: rgba(15, 157, 88, 0.2) !important;
+}
+
+/* Chatbot */
+.dark .chat-container {
+    background-color: #1e1e1e !important;
+    border-color: #3d3d3d !important;
+}
+
+.dark .chat-messages {
+    background-color: #252525 !important;
+}
+
+.dark .chat-message-user {
+    background-color: #0F9D58 !important;
+}
+
+.dark .chat-message-bot {
+    background-color: #2d2d2d !important;
+}
+
+.dark .chat-input {
+    background-color: #252525 !important;
+    border-color: #3d3d3d !important;
+}
+
+/* Prevent flash of unstyled content when loading page */
+.transition-theme {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}

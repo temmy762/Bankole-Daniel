@@ -10,13 +10,16 @@ class PortfolioAdmin {
         this.activeSection = 'dashboard';
         
         this.init();
-    }
-
-    init() {
+    }    init() {
         this.setupEventListeners();
         this.setupLogin();
         this.updateStats();
         this.renderDashboard();
+        
+        // Initialize sync on first load
+        setTimeout(() => {
+            this.syncToPortfolio();
+        }, 1000);
     }
 
     // Default Data Structures
@@ -182,25 +185,51 @@ class PortfolioAdmin {
         this.showNotification('Logged out successfully!', 'info');
     }
 
-    // Event Listeners Setup
-    setupEventListeners() {
+    // Event Listeners Setup    setupEventListeners() {
         // Sidebar navigation
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
                 const section = item.dataset.section;
                 this.switchSection(section);
+                
+                // Close mobile sidebar after navigation
+                if (window.innerWidth < 1024) {
+                    this.closeMobileSidebar();
+                }
             });
         });
 
-        // Sidebar toggle
+        // Sidebar toggle for desktop and mobile
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.getElementById('sidebar');
         const mainContent = document.getElementById('mainContent');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
 
         sidebarToggle?.addEventListener('click', () => {
-            sidebar.classList.toggle('collapsed');
-            mainContent.classList.toggle('expanded');
+            if (window.innerWidth < 1024) {
+                // Mobile behavior
+                this.toggleMobileSidebar();
+            } else {
+                // Desktop behavior
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            }
+        });
+
+        // Mobile sidebar overlay click to close
+        sidebarOverlay?.addEventListener('click', () => {
+            this.closeMobileSidebar();
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                // Reset mobile sidebar state on desktop
+                this.closeMobileSidebar();
+                sidebar.classList.remove('collapsed');
+                mainContent.classList.remove('expanded');
+            }
         });
 
         // User dropdown
@@ -221,6 +250,38 @@ class PortfolioAdmin {
         // Project management
         this.setupProjectEventListeners();
         this.setupReviewEventListeners();
+    }
+
+    // Mobile sidebar functionality
+    toggleMobileSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        
+        const isOpen = sidebar.classList.contains('show');
+        
+        if (isOpen) {
+            this.closeMobileSidebar();
+        } else {
+            this.openMobileSidebar();
+        }
+    }
+
+    openMobileSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        
+        sidebar.classList.add('show');
+        sidebarOverlay.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+    }
+
+    closeMobileSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        
+        sidebar.classList.remove('show');
+        sidebarOverlay.classList.remove('show');
+        document.body.style.overflow = ''; // Restore scroll
     }
 
     setupProjectEventListeners() {
@@ -1249,6 +1310,35 @@ class PortfolioAdmin {
             reviews: activeReviews,
             settings: this.settings
         };
+    }
+
+    // Demo and Testing Functions
+    loadDemoData() {
+        this.projects = this.getDefaultProjects();
+        this.reviews = this.getDefaultReviews();
+        this.settings = this.getDefaultSettings();
+        
+        this.saveData();
+        this.updateStats();
+        this.renderCurrentSection();
+        this.showNotification('Demo data loaded successfully!', 'success');
+    }
+
+    resetAllData() {
+        if (confirm('Are you sure you want to reset all data? This cannot be undone.')) {
+            localStorage.removeItem('portfolioProjects');
+            localStorage.removeItem('portfolioReviews');
+            localStorage.removeItem('portfolioSettings');
+            localStorage.removeItem('portfolioSync');
+            
+            this.projects = [];
+            this.reviews = [];
+            this.settings = this.getDefaultSettings();
+            
+            this.updateStats();
+            this.renderCurrentSection();
+            this.showNotification('All data has been reset!', 'warning');
+        }
     }
 }
 

@@ -1,0 +1,294 @@
+/* Admin Dashboard Responsive Styles */
+
+/* Mobile-First Admin Sidebar */
+@media (max-width: 1023px) {
+    #sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 50;
+    }
+    
+    #sidebar.show {
+        transform: translateX(0);
+    }
+    
+    #mainContent {
+        margin-left: 0 !important;
+        transition: margin-left 0.3s ease;
+    }
+    
+    /* Overlay for mobile sidebar */
+    #sidebarOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 40;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    #sidebarOverlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #sidebar {
+        width: 280px;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    #sidebar {
+        width: 260px;
+    }
+    
+    /* Make nav items more touch-friendly */
+    .nav-item {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .nav-item i {
+        font-size: 1.2rem;
+        width: 24px;
+        text-align: center;
+    }
+    
+    /* Stats cards stack on mobile */
+    .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    #sidebar {
+        width: 240px;
+    }
+    
+    .nav-item {
+        padding: 0.875rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Stats cards single column on very small screens */
+    .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adjust header on small screens */
+    header .flex {
+        padding: 0.75rem 1rem;
+    }
+    
+    header h1 {
+        font-size: 1rem;
+    }
+}
+
+/* Sidebar toggle button enhancement */
+#sidebarToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+#sidebarToggle:hover {
+    background-color: #f3f4f6;
+}
+
+/* Enhanced navigation items */
+.nav-item {
+    position: relative;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    margin-bottom: 0.25rem;
+}
+
+.nav-item:hover {
+    background-color: rgba(15, 157, 88, 0.1);
+    transform: translateX(4px);
+}
+
+.nav-item.active {
+    background: linear-gradient(135deg, #0F9D58 0%, #0d8049 100%);
+    color: white;
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 60%;
+    background: white;
+    border-radius: 2px;
+}
+
+/* Table responsiveness */
+@media (max-width: 767px) {
+    .overflow-x-auto table {
+        min-width: 600px;
+    }
+    
+    /* Hide less important columns on mobile */
+    .table-responsive-hide {
+        display: none;
+    }
+}
+
+/* Form responsiveness */
+@media (max-width: 640px) {
+    .modal .max-w-lg,
+    .modal .max-w-xl,
+    .modal .max-w-2xl {
+        max-width: 95vw;
+        margin: 1rem;
+    }
+    
+    .modal .p-6 {
+        padding: 1rem;
+    }
+    
+    /* Stack form elements */
+    .grid.grid-cols-2 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Admin content area adjustments */
+.admin-content {
+    min-height: calc(100vh - 4rem);
+    transition: margin-left 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+    .admin-content {
+        margin-left: 16rem; /* 256px sidebar width */
+    }
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 1023px) {
+    button,
+    .btn-primary,
+    .btn-secondary,
+    input[type="button"],
+    input[type="submit"] {
+        min-height: 44px;
+        padding: 0.75rem 1rem;
+    }
+    
+    /* Form inputs */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    textarea,
+    select {
+        min-height: 44px;
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+}
+
+/* Chart responsiveness */
+@media (max-width: 767px) {
+    .chart-container {
+        height: 250px !important;
+    }
+    
+    canvas {
+        max-height: 250px !important;
+    }
+}
+
+/* Loading states for mobile */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Responsive utility classes */
+.mobile-hidden {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .mobile-hidden {
+        display: block;
+    }
+}
+
+.desktop-hidden {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .desktop-hidden {
+        display: none;
+    }
+}
+
+/* Improved modal positioning on mobile */
+@media (max-width: 640px) {
+    .modal {
+        align-items: flex-start;
+        padding-top: 2rem;
+    }
+    
+    .modal-content {
+        margin: 0;
+        border-radius: 0.75rem 0.75rem 0 0;
+        max-height: calc(100vh - 2rem);
+    }
+}
+
+/* Enhanced scrolling on mobile */
+@media (max-width: 1023px) {
+    .admin-section {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Hide scrollbars on mobile while keeping functionality */
+    .overflow-x-auto::-webkit-scrollbar,
+    .overflow-y-auto::-webkit-scrollbar {
+        width: 2px;
+        height: 2px;
+    }
+    
+    .overflow-x-auto::-webkit-scrollbar-track,
+    .overflow-y-auto::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .overflow-x-auto::-webkit-scrollbar-thumb,
+    .overflow-y-auto::-webkit-scrollbar-thumb {
+        background: #cbd5e0;
+        border-radius: 1px;
+    }
+}
