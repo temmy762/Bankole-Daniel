@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SolvaTree</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F9D58',
+                        secondary: '#333333',
+                        accent: '#FF6B35'
+                    },
+                    borderRadius: {
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, #0F9D58 0%, #FF6B35 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-input {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-input:focus {
+            border-color: #0F9D58;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(15, 157, 88, 0.1);
+        }
+
+        .social-icon {
+            background: linear-gradient(135deg, #0F9D58 0%, #FF6B35 100%);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info-card {
+            background: linear-gradient(135deg, rgba(15, 157, 88, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(15, 157, 88, 0.1);
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .floating-element:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .floating-element:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .floating-element:nth-child(5) { left: 50%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            25% { opacity: 1; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+            75% { opacity: 1; }
+            100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+        }
+
+        .success-animation {
+            animation: successPulse 0.6s ease-out;
+        }
+
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="font-['Inter'] bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <a href="index.html" class="text-2xl font-['Pacifico'] text-primary">SolvaTree</a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary transition-colors">About</a>
+                    <a href="services.html" class="text-gray-700 hover:text-primary transition-colors">Services</a>
+                    <a href="portfolio.html" class="text-gray-700 hover:text-primary transition-colors">Portfolio</a>
+                    <a href="contact.html" class="text-primary font-medium">Contact</a>
+                </div>
+
+                <button id="mobileMenuToggle" class="md:hidden text-gray-700">
+                    <i class="ri-menu-line ri-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden bg-white border-t border-gray-200 hidden">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <a href="index.html" class="block text-gray-700 hover:text-primary transition-colors">Home</a>
+                <a href="about.html" class="block text-gray-700 hover:text-primary transition-colors">About</a>
+                <a href="services.html" class="block text-gray-700 hover:text-primary transition-colors">Services</a>
+                <a href="portfolio.html" class="block text-gray-700 hover:text-primary transition-colors">Portfolio</a>
+                <a href="contact.html" class="block text-primary font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero min-h-[60vh] flex items-center justify-center relative overflow-hidden">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+                Get In <span class="bg-white text-primary px-4 py-2 rounded-2xl">Touch</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+                Ready to transform your digital presence? Let's discuss your project and bring your vision to life.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact-form" class="bg-white text-primary px-8 py-4 rounded-button font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
+                    Start Your Project
+                </a>
+                <a href="#contact-info" class="border-2 border-white text-white px-8 py-4 rounded-button font-semibold hover:bg-white hover:text-primary transition-all">
+                    View Contact Info
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Contact Form -->
+                <div id="contact-form" class="contact-card rounded-2xl p-8">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Send us a Message</h2>
+                        <p class="text-gray-600">Fill out the form below and we'll get back to you within 24 hours.</p>
+                    </div>
+
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                                <input type="text" name="firstName" required class="form-input w-full px-4 py-3 rounded-button border border-gray-300 focus:outline-none" placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                                <input type="text" name="lastName" required class="form-input w-full px-4 py-3 rounded-button border border-gray-300 focus:outline-none" placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" name="email" required class="form-input w-full px-4 py-3 rounded-button border border-gray-300 focus:outline-none" placeholder="john@example.com">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" name="phone" class="form-input w-full px-4 py-3 rounded-button border border-gray-300 focus:outline-none" placeholder="+1 (555) 123-4567">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Project Type *</label>
+                            <select name="projectType" required class="form-input w-full px-4 py-3 rounded-button border border-gray-300 focus:outline-none">
+                                <option value="">Select a service</option>
+                                <option value="wordpress">WordPress Development</option>
+                                <option value="fullstack">Full Stack Development</option>
+                                <option value="ecommerce">E-commerce Solution</option>
+                                <option value="ai">AI Integration</option>
+                                <option value="mobile">Mobile App</option>
+                                <option value="consultation">Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Budget Range</label>
+                            <select name="budget" class="form-input w-full px-4 py-3 rounded-button border border-gray-300 focus:outline-none">
+                                <option value="">Select budget range</option>
+                                <option value="under-5k">Under $5,000</option>
+                                <option value="5k-10k">$5,000 - $10,000</option>
+                                <option value="10k-25k">$10,000 - $25,000</option>
+                                <option value="25k-50k">$25,000 - $50,000</option>
+                                <option value="over-50k">Over $50,000</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Project Timeline</label>
+                            <select name="timeline" class="form-input w-full px-4 py-3 rounded-button border border-gray-300 focus:outline-none">
+                                <option value="">Select timeline</option>
+                                <option value="asap">ASAP</option>
+                                <option value="1-2-weeks">1-2 weeks</option>
+                                <option value="1-month">1 month</option>
+                                <option value="2-3-months">2-3 months</option>
+                                <option value="3-6-months">3-6 months</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                            <textarea name="message" rows="5" required class="form-input w-full px-4 py-3 rounded-button border border-gray-300 focus:outline-none resize-none" placeholder="Tell us about your project..."></textarea>
+                        </div>
+
+                        <div class="flex items-center">
+                            <input type="checkbox" name="newsletter" id="newsletter" class="rounded border-gray-300 text-primary focus:ring-primary">
+                            <label for="newsletter" class="ml-2 text-sm text-gray-600">Subscribe to our newsletter for updates and tips</label>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent text-white py-4 rounded-button font-semibold hover:shadow-lg transition-all transform hover:scale-[1.02]">
+                            <span class="flex items-center justify-center">
+                                <i class="ri-send-plane-line mr-2"></i>
+                                Send Message
+                            </span>
+                        </button>
+                    </form>
+
+                    <!-- Success Message -->
+                    <div id="successMessage" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-button">
+                        <div class="flex items-center text-green-800">
+                            <i class="ri-check-circle-line text-green-600 mr-2"></i>
+                            <span class="font-medium">Message sent successfully!</span>
+                        </div>
+                        <p class="text-green-700 text-sm mt-1">We'll get back to you within 24 hours.</p>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div id="contact-info" class="space-y-8">
+                    <!-- Direct Contact -->
+                    <div class="contact-info-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white">
+                                    <i class="ri-mail-line"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Email</h4>
+                                    <p class="text-gray-600">hello@solvatree.com</p>
+                                    <p class="text-gray-600">support@solvatree.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white">
+                                    <i class="ri-phone-line"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Phone</h4>
+                                    <p class="text-gray-600">+1 (555) 123-4567</p>
+                                    <p class="text-gray-600">+1 (555) 765-4321</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Office</h4>
+                                    <p class="text-gray-600">123 Tech Street</p>
+                                    <p class="text-gray-600">San Francisco, CA 94102</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white">
+                                    <i class="ri-time-line"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Business Hours</h4>
+                                    <p class="text-gray-600">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                                    <p class="text-gray-600">Sat: 10:00 AM - 4:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="contact-info-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Follow Us</h3>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="social-icon text-white p-4 rounded-xl text-center hover:shadow-lg transition-all">
+                                <i class="ri-linkedin-line text-2xl mb-2"></i>
+                                <p class="text-sm font-medium">LinkedIn</p>
+                            </a>
+                            <a href="#" class="social-icon text-white p-4 rounded-xl text-center hover:shadow-lg transition-all">
+                                <i class="ri-github-line text-2xl mb-2"></i>
+                                <p class="text-sm font-medium">GitHub</p>
+                            </a>
+                            <a href="#" class="social-icon text-white p-4 rounded-xl text-center hover:shadow-lg transition-all">
+                                <i class="ri-twitter-line text-2xl mb-2"></i>
+                                <p class="text-sm font-medium">Twitter</p>
+                            </a>
+                            <a href="#" class="social-icon text-white p-4 rounded-xl text-center hover:shadow-lg transition-all">
+                                <i class="ri-instagram-line text-2xl mb-2"></i>
+                                <p class="text-sm font-medium">Instagram</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Response Time -->
+                    <div class="contact-info-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Response Time</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <i class="ri-mail-line text-primary"></i>
+                                    <span class="text-gray-700">Email</span>
+                                </div>
+                                <span class="text-sm font-medium text-primary">< 24 hours</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <i class="ri-phone-line text-primary"></i>
+                                    <span class="text-gray-700">Phone</span>
+                                </div>
+                                <span class="text-sm font-medium text-primary">< 2 hours</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <i class="ri-message-3-line text-primary"></i>
+                                    <span class="text-gray-700">Live Chat</span>
+                                </div>
+                                <span class="text-sm font-medium text-primary">< 5 minutes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Find Our Office</h2>
+                <p class="text-gray-600 text-lg">Located in the heart of San Francisco's tech district</p>
+            </div>
+
+            <div class="map-container">
+                <div class="w-full h-96 bg-gray-200 rounded-2xl flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="ri-map-pin-line text-6xl text-primary mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Interactive Map</h3>
+                        <p class="text-gray-600 mb-4">123 Tech Street, San Francisco, CA 94102</p>
+                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center bg-primary text-white px-6 py-3 rounded-button hover:bg-opacity-90 transition-all">
+                            <i class="ri-external-link-line mr-2"></i>
+                            Open in Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 text-lg">Quick answers to common questions</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="faq-item bg-white rounded-xl p-6 border border-gray-200">
+                    <button class="faq-button w-full text-left flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-gray-800">How long does a typical project take?</h3>
+                        <i class="ri-arrow-down-s-line text-primary text-xl transform transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        Project timelines vary depending on complexity. Simple WordPress sites typically take 2-4 weeks, while custom full-stack applications can take 8-16 weeks. We'll provide a detailed timeline during our initial consultation.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-xl p-6 border border-gray-200">
+                    <button class="faq-button w-full text-left flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-gray-800">What's included in your development process?</h3>
+                        <i class="ri-arrow-down-s-line text-primary text-xl transform transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        Our comprehensive process includes discovery, design, development, testing, deployment, and post-launch support. We also provide training, documentation, and ongoing maintenance options.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-xl p-6 border border-gray-200">
+                    <button class="faq-button w-full text-left flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-gray-800">Do you provide ongoing support?</h3>
+                        <i class="ri-arrow-down-s-line text-primary text-xl transform transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        Yes! We offer various support packages including bug fixes, updates, security monitoring, and feature enhancements. Our support team is available to keep your project running smoothly.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-xl p-6 border border-gray-200">
+                    <button class="faq-button w-full text-left flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-gray-800">What technologies do you work with?</h3>
+                        <i class="ri-arrow-down-s-line text-primary text-xl transform transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        We specialize in modern web technologies including React, Node.js, Python, WordPress, and cloud platforms. We choose the best technology stack based on your specific project requirements.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <a href="index.html" class="text-2xl font-['Pacifico'] text-primary mb-4 block">SolvaTree</a>
+                    <p class="text-gray-300 mb-4">Transforming ideas into powerful digital solutions with cutting-edge technology and creative design.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-primary transition-colors">
+                            <i class="ri-linkedin-line ri-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-primary transition-colors">
+                            <i class="ri-github-line ri-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-primary transition-colors">
+                            <i class="ri-twitter-line ri-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-primary transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-primary transition-colors">Services</a></li>
+                        <li><a href="portfolio.html" class="text-gray-300 hover:text-primary transition-colors">Portfolio</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#wordpress" class="text-gray-300 hover:text-primary transition-colors">WordPress Development</a></li>
+                        <li><a href="services.html#fullstack" class="text-gray-300 hover:text-primary transition-colors">Full Stack Development</a></li>
+                        <li><a href="services.html#ecommerce" class="text-gray-300 hover:text-primary transition-colors">E-commerce Solutions</a></li>
+                        <li><a href="services.html#ai" class="text-gray-300 hover:text-primary transition-colors">AI Integration</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="ri-mail-line mr-2"></i>
+                            hello@solvatree.com
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-phone-line mr-2"></i>
+                            +1 (555) 123-4567
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-map-pin-line mr-2"></i>
+                            San Francisco, CA
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-12 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 SolvaTree. All rights reserved. | Built with ❤️ by SolvaTree</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/contact.js"></script>
+</body>
+</html>

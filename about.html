@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Daniel Bankole Oriyomi | SolvaTree</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F9D58',
+                        secondary: '#333333',
+                        accent: '#34D399'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-['Pacifico'] text-primary">SolvaTree</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                        <a href="about.html" class="text-primary px-3 py-2 text-sm font-medium border-b-2 border-primary">About</a>
+                        <a href="services.html" class="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Services</a>
+                        <a href="portfolio.html" class="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Portfolio</a>
+                        <a href="contact.html" class="text-gray-600 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-primary font-medium">About</a>
+                <a href="services.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Services</a>
+                <a href="portfolio.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Portfolio</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>    <!-- Modern Hero Section -->
+    <header class="relative bg-gradient-to-br from-primary via-accent to-blue-600 py-24 overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 50%, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+        </div>
+        
+        <div class="relative max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white">
+                <!-- Main Title -->
+                <div class="mb-8">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-tight">
+                        Daniel Bankole 
+                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-white">
+                            Oriyomi
+                        </span>
+                    </h1>
+                    <div class="text-xl md:text-2xl mb-6 opacity-90 space-y-2">
+                        <p class="font-semibold">Founder & Lead Developer at SolvaTree</p>
+                        <p class="text-lg">WordPress Expert | Full Stack Developer | Tech Innovator</p>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Badge -->
+                <div class="inline-flex items-center bg-white bg-opacity-20 rounded-2xl px-8 py-4 backdrop-blur-md border border-white border-opacity-30 mb-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-lg font-bold">SolvaTree Founder</div>
+                            <div class="text-sm opacity-80">Your Complete Solution Point</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Pills -->
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="bg-white bg-opacity-15 backdrop-blur-sm rounded-full px-6 py-2 border border-white border-opacity-20">
+                        <span class="font-bold">100+</span> <span class="opacity-90">Projects</span>
+                    </div>
+                    <div class="bg-white bg-opacity-15 backdrop-blur-sm rounded-full px-6 py-2 border border-white border-opacity-20">
+                        <span class="font-bold">Global</span> <span class="opacity-90">Reach</span>
+                    </div>
+                    <div class="bg-white bg-opacity-15 backdrop-blur-sm rounded-full px-6 py-2 border border-white border-opacity-20">
+                        <span class="font-bold">Years</span> <span class="opacity-90">Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-16 h-16 bg-white bg-opacity-10 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-20 w-12 h-12 bg-white bg-opacity-10 rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <!-- Modern Biography Section -->
+        <section class="mb-24">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="mb-8">
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">About Me</h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                    </div>
+                    
+                    <div class="prose prose-lg text-gray-700 space-y-6">
+                        <p class="text-xl leading-relaxed">
+                            Hello! I'm Daniel, the founder of <span class="font-semibold text-primary">SolvaTree</span> - a complete solution point where businesses and individuals get all their technology and marketing needs met under one roof.
+                        </p>
+                        
+                        <p class="leading-relaxed">
+                            With years of experience in the industry, I've had the privilege of working with <span class="font-semibold text-accent">over 100+ clients across the globe</span>, from small startups to large-scale enterprises.
+                        </p>
+                        
+                        <p class="leading-relaxed">
+                            My journey began with a simple belief: every business deserves access to innovative technology solutions that drive real growth and success. This philosophy led me to establish SolvaTree, where we don't just build websites or applications - we <span class="font-semibold">create digital ecosystems</span> that help our clients thrive.
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-6 border-l-4 border-primary">
+                            <p class="leading-relaxed font-medium text-gray-800">
+                                What sets me apart is my commitment to translating even the most complex or ambitious ideas into successful realities. Whether you're an individual with a groundbreaking concept or a company looking to revolutionize your digital presence, I bring the expertise and dedication needed to make it happen.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <div class="relative">
+                        <!-- Main Profile Card -->
+                        <div class="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
+                            <div class="text-center">
+                                <!-- Profile Image Placeholder -->
+                                <div class="relative inline-block mb-6">
+                                    <div class="w-48 h-48 bg-gradient-to-br from-primary via-accent to-blue-600 rounded-full flex items-center justify-center text-white text-4xl font-bold shadow-xl">
+                                        <span class="text-5xl">DB</span>
+                                    </div>
+                                    <!-- Status Badge -->
+                                    <div class="absolute -bottom-2 -right-2 bg-green-500 text-white rounded-full p-2 shadow-lg">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Daniel Bankole Oriyomi</h3>
+                                <p class="text-primary font-semibold mb-4">Founder & Lead Developer</p>
+                                
+                                <!-- Tech Stack Pills -->
+                                <div class="flex flex-wrap justify-center gap-2 mb-6">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">WordPress</span>
+                                    <span class="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Full Stack</span>
+                                    <span class="bg-purple-100 text-purple-800 text-xs font-medium px-3 py-1 rounded-full">AI Development</span>
+                                    <span class="bg-orange-100 text-orange-800 text-xs font-medium px-3 py-1 rounded-full">Web Design</span>
+                                </div>
+                                
+                                <!-- Contact Button -->
+                                <a href="mailto:info@solvatree.com" class="inline-flex items-center bg-gradient-to-r from-primary to-accent text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                    </svg>
+                                    Get in Touch
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Cards -->
+                        <div class="absolute -top-4 -left-4 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">Available</span>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">Innovating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>        <!-- Modern Company Info -->
+        <section class="mb-24">
+            <div class="bg-gradient-to-br from-gray-50 to-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">SolvaTree</h2>
+                    <p class="text-2xl text-primary font-semibold mb-2">Your Complete Solution Point</p>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center group">
+                        <div class="bg-gradient-to-br from-primary to-primary/80 text-white rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Location</h3>
+                        <p class="text-gray-600 font-medium">Lagos, Nigeria</p>
+                        <p class="text-sm text-gray-500">Serving clients globally</p>
+                    </div>
+                    
+                    <div class="text-center group">
+                        <div class="bg-gradient-to-br from-accent to-accent/80 text-white rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Contact</h3>
+                        <a href="mailto:info@solvatree.com" class="text-primary hover:text-accent transition-colors font-medium">info@solvatree.com</a>
+                        <p class="text-sm text-gray-500">24/7 Support</p>
+                    </div>
+                    
+                    <div class="text-center group">
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+                                <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Experience</h3>
+                        <p class="text-gray-600 font-medium">Years of Expertise</p>
+                        <p class="text-sm text-gray-500">100+ Projects Delivered</p>
+                    </div>
+                    
+                    <div class="text-center group">
+                        <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Quality</h3>
+                        <p class="text-gray-600 font-medium">Premium Solutions</p>
+                        <p class="text-sm text-gray-500">Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="mb-20">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Mission -->
+                <article class="bg-gradient-to-br from-primary to-primary/80 text-white rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-white bg-opacity-20 rounded-full p-3 mr-4">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold">Our Mission</h3>
+                    </div>                    <p class="text-lg opacity-90 leading-relaxed mb-4">
+                        To empower businesses and individuals worldwide by delivering innovative, reliable, and comprehensive technology solutions that drive sustainable digital growth and transformation.
+                    </p>
+                    <p class="text-base opacity-80 leading-relaxed">
+                        We are committed to being your complete solution point, transforming complex challenges into elegant, scalable solutions that not only meet today's needs but anticipate tomorrow's opportunities. Through cutting-edge technology, strategic thinking, and unwavering dedication to excellence, we help our clients achieve measurable success in the digital landscape.
+                    </p>
+                </article>
+                
+                <!-- Vision -->
+                <article class="bg-gradient-to-br from-accent to-accent/80 text-white rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-white bg-opacity-20 rounded-full p-3 mr-4">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold">Our Vision</h3>
+                    </div>                    <p class="text-lg opacity-90 leading-relaxed mb-4">
+                        To become the globally recognized leader in innovative technology solutions, setting new standards for excellence in digital transformation and establishing SolvaTree as the premier destination for comprehensive tech services.
+                    </p>
+                    <p class="text-base opacity-80 leading-relaxed">
+                        We envision a future where every business, regardless of size or industry, has access to world-class technology solutions that accelerate growth, enhance efficiency, and create lasting competitive advantages. Our vision extends beyond traditional service delivery to building lasting partnerships that evolve with our clients' ambitions and the ever-changing digital landscape.
+                    </p>
+                </article>
+            </div>
+        </section>        <!-- Achievement Counters - Standalone Section -->
+        <section class="mb-24 relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-white opacity-80"></div>
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, rgba(15, 157, 88, 0.03) 0%, transparent 25%), radial-gradient(circle at 75% 75%, rgba(255, 107, 107, 0.03) 0%, transparent 25%);"></div>
+            
+            <div class="relative z-10 bg-white rounded-3xl shadow-2xl p-8 md:p-16 border border-gray-100 mx-4">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Proven Results</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        Numbers that showcase our commitment to excellence and the trust our clients place in us
+                    </p>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mt-6"></div>
+                </div>
+                
+                <!-- Counter Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Projects Counter -->
+                    <div class="counter-box text-center group">
+                        <div class="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-8 hover:from-primary/10 hover:to-primary/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-primary/10">
+                            <div class="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="counter text-4xl md:text-5xl font-bold text-primary mb-3" data-target="100">0</div>
+                            <div class="text-lg font-semibold text-gray-800 mb-2">Projects Completed</div>
+                            <div class="text-sm text-gray-500">Successful deliveries worldwide</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Clients Counter -->
+                    <div class="counter-box text-center group">
+                        <div class="bg-gradient-to-br from-accent/5 to-accent/10 rounded-2xl p-8 hover:from-accent/10 hover:to-accent/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-accent/10">
+                            <div class="w-16 h-16 bg-gradient-to-br from-accent to-accent/80 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                                </svg>
+                            </div>
+                            <div class="counter text-4xl md:text-5xl font-bold text-accent mb-3" data-target="50">0</div>
+                            <div class="text-lg font-semibold text-gray-800 mb-2">Happy Clients</div>
+                            <div class="text-sm text-gray-500">Satisfied customers globally</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Countries Counter -->
+                    <div class="counter-box text-center group">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover:from-blue-100 hover:to-blue-200 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-blue-200">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="counter text-4xl md:text-5xl font-bold text-blue-600 mb-3" data-target="15">0</div>
+                            <div class="text-lg font-semibold text-gray-800 mb-2">Countries Served</div>
+                            <div class="text-sm text-gray-500">Global reach & presence</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Counter -->
+                    <div class="counter-box text-center group">
+                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 hover:from-purple-100 hover:to-purple-200 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-purple-200">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="counter text-4xl md:text-5xl font-bold text-purple-600 mb-3" data-target="5">0</div>
+                            <div class="text-lg font-semibold text-gray-800 mb-2">Years Experience</div>
+                            <div class="text-sm text-gray-500">Industry expertise & growth</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievement Badges -->
+                <div class="mt-16 pt-12 border-t border-gray-100">
+                    <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
+                        <div class="flex items-center space-x-2 text-sm text-gray-500 font-medium">
+                            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                            <span>24/7 Support</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-500 font-medium">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                            <span>99.9% Uptime</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-500 font-medium">
+                            <div class="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
+                            <span>ISO Certified</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-500 font-medium">
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full animate-pulse"></div>
+                            <span>Award Winning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why SolvaTree -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose SolvaTree?</h2>
+                <p class="text-xl text-gray-600">The values that drive our success</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="bg-primary bg-opacity-10 rounded-full w-12 h-12 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Quality First</h3>
+                    <p class="text-gray-600">Every line of code, every design element, and every solution is crafted with meticulous attention to detail and industry best practices.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="bg-accent bg-opacity-10 rounded-full w-12 h-12 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Timely Delivery</h3>
+                    <p class="text-gray-600">We understand the importance of deadlines and consistently deliver projects on time without compromising on quality.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Client-Focused</h3>
+                    <p class="text-gray-600">Your success is our success. We work closely with you to understand your needs and exceed your expectations.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="bg-purple-100 rounded-full w-12 h-12 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Scalable Solutions</h3>
+                    <p class="text-gray-600">We build solutions that grow with your business, ensuring long-term value and adaptability to future needs.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="bg-yellow-100 rounded-full w-12 h-12 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Expert Support</h3>
+                    <p class="text-gray-600">Ongoing support and maintenance ensure your digital assets continue to perform optimally long after launch.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="bg-red-100 rounded-full w-12 h-12 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Innovation</h3>
+                    <p class="text-gray-600">We stay ahead of industry trends and technologies to provide cutting-edge solutions that give you a competitive advantage.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="text-center">
+            <div class="bg-gradient-to-r from-primary to-accent rounded-2xl p-12 text-white">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
+                <p class="text-xl mb-8 opacity-90">Let's turn your ideas into digital success stories</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        Get Started Today
+                    </a>
+                    <a href="portfolio.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors">
+                        View Our Work
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <h3 class="text-xl font-['Pacifico'] text-white mb-6">SolvaTree</h3>
+                    <p class="text-gray-400 mb-6">Your complete solution point for web development, digital marketing, and AI integration services.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-twitter-x-line ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-linkedin-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-github-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-instagram-line ri-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Services -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h3 class="text-lg font-semibold mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">WordPress Development</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Full Stack Development</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">AI Integration</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">E-commerce Solutions</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <h3 class="text-lg font-semibold mb-6">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-mail-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-400">info@solvatree.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-phone-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-400">+234 801 234 5678</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-map-pin-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-400">Lagos, Nigeria</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Newsletter -->
+            <div class="border-t border-gray-800 pt-8 pb-4">
+                <div class="max-w-xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+                    <h3 class="text-lg font-semibold mb-4 text-center">Subscribe to Our Newsletter</h3>
+                    <form id="newsletterForm" class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" placeholder="Your email address" class="flex-1 bg-gray-800 text-white border-none !rounded-button px-4 py-2 focus:ring-2 focus:ring-primary" required>
+                        <button type="submit" class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Subscribe</button>
+                    </form>
+                    <div id="newsletterSuccess" class="hidden mt-4 p-2 bg-green-800 text-white text-center rounded-md">
+                        Thank you for subscribing! You'll receive updates soon.
+                    </div>
+                </div>
+            </div>
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-500">© 2025 SolvaTree. All rights reserved.</p>
+            </div>
+        </div>
+    </footer><!-- JavaScript -->
+    <script src="js/enhanced-about.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to nav
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+        // Animate counters when they come into view
+        const counters = document.querySelectorAll('[class*="text-3xl"]');
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.textContent.includes('+')) {
+                    animateCounter(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => {
+            if (counter.textContent.includes('+')) {
+                counterObserver.observe(counter);
+            }
+        });
+
+        function animateCounter(element) {
+            const target = parseInt(element.textContent);
+            const duration = 2000;
+            const start = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(progress * target);
+                element.textContent = current + '+';
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+    </script>
+</body>
+</html>

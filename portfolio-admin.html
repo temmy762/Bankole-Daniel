@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website CMS Admin Dashboard - SolvaTree</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0F9D58',secondary:'#333333',accent:'#FF6B35',success:'#28a745',warning:'#ffc107',danger:'#dc3545',info:'#17a2b8'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
+<style>
+.admin-sidebar {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, rgba(15, 157, 88, 0.1) 0%, rgba(51, 51, 51, 0.1) 100%);
+}
+.admin-sidebar.collapsed {
+    width: 80px;
+}
+.admin-content {
+    transition: all 0.3s ease;
+}
+.admin-content.expanded {
+    margin-left: 80px;
+}
+.status-badge {
+    @apply px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide;
+}
+.status-active { @apply bg-green-100 text-green-800 border border-green-200; }
+.status-draft { @apply bg-yellow-100 text-yellow-800 border border-yellow-200; }
+.status-archived { @apply bg-gray-100 text-gray-800 border border-gray-200; }
+.status-pending { @apply bg-blue-100 text-blue-800 border border-blue-200; }
+.status-published { @apply bg-primary text-white border border-primary; }
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+    transition: all 0.3s ease;
+    position: relative;
+}
+.nav-item:hover {
+    background: linear-gradient(135deg, rgba(15, 157, 88, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+    transform: translateX(4px);
+}
+.nav-item.active {
+    background: linear-gradient(135deg, #0F9D58 0%, #FF6B35 100%);
+    color: white;
+}
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: white;
+    border-radius: 2px;
+}
+
+.stats-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+.stats-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0F9D58 0%, #0d8049 100%);
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0d8049 0%, #0F9D58 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(15, 157, 88, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+}
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #5a6268 0%, #6c757d 100%);
+    transform: translateY(-2px);
+}
+
+.table-row {
+    transition: all 0.3s ease;
+}
+.table-row:hover {
+    background: rgba(15, 157, 88, 0.05);
+    transform: scale(1.01);
+}
+
+.modal {
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.form-input {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.9);
+}
+.form-input:focus {
+    border-color: #0F9D58;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(15, 157, 88, 0.1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.sidebar-collapsed .nav-text {
+    display: none;
+}
+.sidebar-collapsed .nav-item {
+    justify-content: center;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Login Modal -->
+<div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+<div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+<div class="text-center mb-6">
+<a href="index.html" class="text-2xl font-['Pacifico'] text-primary">SolvaTree</a>
+<h2 class="text-xl font-bold text-secondary mt-2">Admin Login</h2>
+<p class="text-gray-600 text-sm">Access the portfolio dashboard</p>
+</div>
+<form id="loginForm" class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+<input type="text" id="username" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter username" required>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+<input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter password" required>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-2 rounded-button hover:bg-opacity-90 transition-all">
+Login
+</button>
+<div class="text-center text-xs text-gray-500 mt-4">
+Demo: admin / password123
+</div>
+</form>
+</div>
+</div>
+
+<!-- Admin Interface -->
+<div id="adminInterface" class="hidden">
+<!-- Top Header -->
+<header class="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-40">
+<div class="flex items-center justify-between px-4 py-3">
+<div class="flex items-center space-x-4">
+<button id="sidebarToggle" class="lg:hidden text-gray-500 hover:text-gray-700">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+<a href="index.html" class="text-xl font-['Pacifico'] text-primary">SolvaTree</a>
+<span class="text-gray-400">|</span>
+<h1 class="text-lg font-semibold text-gray-700">Admin Dashboard</h1>
+</div>
+<div class="flex items-center space-x-4">
+<a href="portfolio.html" target="_blank" class="text-gray-500 hover:text-primary">
+<i class="ri-external-link-line"></i>
+</a>
+<div class="relative">
+<button id="userMenu" class="flex items-center space-x-2 text-gray-700 hover:text-primary">
+<i class="ri-user-line"></i>
+<span class="hidden sm:inline">Admin</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div id="userDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border hidden">
+<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Profile</a>
+<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Settings</a>
+<hr class="my-1">
+<button id="logoutBtn" class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-50">Logout</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Sidebar -->
+<aside id="sidebar" class="admin-sidebar fixed left-0 top-16 bottom-0 w-64 bg-white shadow-lg border-r border-gray-200 z-30">
+<nav class="p-4 space-y-2">
+<a href="#dashboard" class="nav-item flex items-center space-x-3 px-3 py-2 rounded-button text-gray-700 hover:bg-primary hover:text-white transition-all" data-section="dashboard">
+<i class="ri-dashboard-line"></i>
+<span>Dashboard</span>
+</a>
+<a href="#projects" class="nav-item flex items-center space-x-3 px-3 py-2 rounded-button text-gray-700 hover:bg-primary hover:text-white transition-all" data-section="projects">
+<i class="ri-folder-line"></i>
+<span>Projects</span>
+</a>
+<a href="#reviews" class="nav-item flex items-center space-x-3 px-3 py-2 rounded-button text-gray-700 hover:bg-primary hover:text-white transition-all" data-section="reviews">
+<i class="ri-star-line"></i>
+<span>Reviews</span>
+</a>
+<a href="#analytics" class="nav-item flex items-center space-x-3 px-3 py-2 rounded-button text-gray-700 hover:bg-primary hover:text-white transition-all" data-section="analytics">
+<i class="ri-bar-chart-line"></i>
+<span>Analytics</span>
+</a>                <a href="#content" class="nav-item flex items-center space-x-3 px-3 py-2 rounded-button text-gray-700 hover:bg-primary hover:text-white transition-all" data-section="content">
+                    <i class="ri-file-text-line"></i>
+                    <span>Content</span>
+                </a>
+                <a href="#users" class="nav-item flex items-center space-x-3 px-3 py-2 rounded-button text-gray-700 hover:bg-primary hover:text-white transition-all" data-section="users">
+                    <i class="ri-user-line"></i>
+                    <span>Users</span>
+                </a>
+                <a href="#media" class="nav-item flex items-center space-x-3 px-3 py-2 rounded-button text-gray-700 hover:bg-primary hover:text-white transition-all" data-section="media">
+                    <i class="ri-image-line"></i>
+                    <span>Media</span>
+                </a>
+                <a href="#settings" class="nav-item flex items-center space-x-3 px-3 py-2 rounded-button text-gray-700 hover:bg-primary hover:text-white transition-all" data-section="settings">
+                    <i class="ri-settings-line"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+<!-- Main Content -->
+<main id="mainContent" class="admin-content lg:ml-64 pt-16 min-h-screen">
+<div class="p-6">
+
+<!-- Dashboard Section -->
+<div id="dashboard-section" class="admin-section">
+<div class="mb-6">
+<h2 class="text-2xl font-bold text-gray-800">Dashboard Overview</h2>
+<p class="text-gray-600">Welcome back! Here's what's happening with your portfolio.</p>
+</div>
+
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="bg-white p-6 rounded-lg shadow-sm border">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-gray-600">Total Projects</p>
+<p class="text-2xl font-bold text-gray-900" id="totalProjectsCount">0</p>
+</div>
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-folder-line text-primary text-xl"></i>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-gray-600">Active Projects</p>
+<p class="text-2xl font-bold text-gray-900" id="activeProjectsCount">0</p>
+</div>
+<div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+<i class="ri-checkbox-circle-line text-green-600 text-xl"></i>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-gray-600">Client Reviews</p>
+<p class="text-2xl font-bold text-gray-900" id="totalReviewsCount">0</p>
+</div>
+<div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+<i class="ri-star-line text-yellow-600 text-xl"></i>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-gray-600">Avg. Rating</p>
+<p class="text-2xl font-bold text-gray-900" id="averageRating">0.0</p>
+</div>
+<div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+<i class="ri-thumbs-up-line text-blue-600 text-xl"></i>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Recent Activity -->
+<div class="bg-white rounded-lg shadow-sm border">
+<div class="p-6 border-b border-gray-200">
+<h3 class="text-lg font-semibold text-gray-800">Recent Activity</h3>
+</div>
+<div class="p-6">
+<div id="recentActivity" class="space-y-4">
+<!-- Activity items will be loaded here -->
+</div>
+</div>
+</div>
+</div>
+
+<!-- Projects Section -->
+<div id="projects-section" class="admin-section hidden">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h2 class="text-2xl font-bold text-gray-800">Projects Management</h2>
+<p class="text-gray-600">Manage your portfolio projects</p>
+</div>
+<button id="addProjectBtn" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-all">
+<i class="ri-add-line mr-2"></i>Add Project
+</button>
+</div>
+
+<!-- Projects Table -->
+<div class="bg-white rounded-lg shadow-sm border overflow-hidden">
+<div class="p-4 border-b border-gray-200">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+<div class="flex items-center space-x-3">
+<input type="text" id="projectSearch" placeholder="Search projects..." class="px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+<select id="categoryFilter" class="px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+<option value="">All Categories</option>
+<option value="wordpress">WordPress</option>
+<option value="fullstack">Full Stack</option>
+<option value="ecommerce">E-commerce</option>
+<option value="ai">AI & ML</option>
+<option value="mobile">Mobile</option>
+</select>
+</div>
+<div class="flex items-center space-x-2">
+<button id="bulkAction" class="px-3 py-2 bg-gray-100 text-gray-700 rounded-button hover:bg-gray-200 transition-all">
+Bulk Actions
+</button>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+<input type="checkbox" id="selectAll" class="rounded">
+</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Client</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody id="projectsTableBody" class="bg-white divide-y divide-gray-200">
+<!-- Projects will be loaded here -->
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Reviews Section -->
+<div id="reviews-section" class="admin-section hidden">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h2 class="text-2xl font-bold text-gray-800">Client Reviews</h2>
+<p class="text-gray-600">Manage testimonials and feedback</p>
+</div>
+<button id="addReviewBtn" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-all">
+<i class="ri-add-line mr-2"></i>Add Review
+</button>
+</div>
+
+<div id="reviewsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Reviews will be loaded here -->
+</div>
+</div>
+
+<!-- Analytics Section -->
+<div id="analytics-section" class="admin-section hidden">
+<div class="mb-6">
+<h2 class="text-2xl font-bold text-gray-800">Analytics & Insights</h2>
+<p class="text-gray-600">Track your portfolio performance</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="bg-white p-6 rounded-lg shadow-sm border">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">Project Categories</h3>
+<div id="categoryChart" class="h-64 flex items-center justify-center text-gray-500">
+<i class="ri-pie-chart-line text-4xl"></i>
+<span class="ml-2">Chart will be displayed here</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">Project Timeline</h3>
+<div id="timelineChart" class="h-64 flex items-center justify-center text-gray-500">
+<i class="ri-line-chart-line text-4xl"></i>
+<span class="ml-2">Chart will be displayed here</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Settings Section -->
+<div id="settings-section" class="admin-section hidden">
+<div class="mb-6">
+<h2 class="text-2xl font-bold text-gray-800">Settings</h2>
+<p class="text-gray-600">Configure your portfolio preferences</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="bg-white p-6 rounded-lg shadow-sm border">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">General Settings</h3>
+<form class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Site Title</label>
+<input type="text" value="SolvaTree Portfolio" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Contact Email</label>
+<input type="email" value="hello@solvatree.com" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Projects per Page</label>
+<select class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+<option value="9">9</option>
+<option value="12">12</option>
+<option value="15">15</option>
+</select>
+</div>
+<button type="submit" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-all">
+Save Changes
+</button>
+</form>
+</div>
+
+<div class="bg-white p-6 rounded-lg shadow-sm border">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">Export & Backup</h3>
+<div class="space-y-4">
+<div>
+<h4 class="font-medium text-gray-700 mb-2">Export Data</h4>
+<div class="flex space-x-2">
+<button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-button hover:bg-gray-200 transition-all">
+Export Projects
+</button>
+<button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-button hover:bg-gray-200 transition-all">
+Export Reviews
+</button>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-700 mb-2">Backup</h4>
+<button class="bg-green-100 text-green-700 px-3 py-2 rounded-button hover:bg-green-200 transition-all">
+Create Backup
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Content Management Section -->
+<div id="content-section" class="admin-section hidden">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h2 class="text-2xl font-bold text-gray-800">Content Management</h2>
+<p class="text-gray-600">Manage website content and pages</p>
+</div>
+<button id="addContentBtn" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-all">
+<i class="ri-add-line mr-2"></i>Add Content
+</button>
+</div>
+
+<!-- Content Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-white rounded-lg shadow-sm border p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-800">About Page</h3>
+<span class="status-badge status-published">Published</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">Main about page content and sections</p>
+<div class="flex space-x-2">
+<button class="text-primary hover:text-primary/80 text-sm">
+<i class="ri-edit-line mr-1"></i>Edit
+</button>
+<button class="text-gray-600 hover:text-gray-800 text-sm">
+<i class="ri-eye-line mr-1"></i>Preview
+</button>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm border p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-800">Services Page</h3>
+<span class="status-badge status-published">Published</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">Services offered and pricing information</p>
+<div class="flex space-x-2">
+<button class="text-primary hover:text-primary/80 text-sm">
+<i class="ri-edit-line mr-1"></i>Edit
+</button>
+<button class="text-gray-600 hover:text-gray-800 text-sm">
+<i class="ri-eye-line mr-1"></i>Preview
+</button>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm border p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-800">Contact Page</h3>
+<span class="status-badge status-published">Published</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">Contact form and information</p>
+<div class="flex space-x-2">
+<button class="text-primary hover:text-primary/80 text-sm">
+<i class="ri-edit-line mr-1"></i>Edit
+</button>
+<button class="text-gray-600 hover:text-gray-800 text-sm">
+<i class="ri-eye-line mr-1"></i>Preview
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Users Management Section -->
+<div id="users-section" class="admin-section hidden">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h2 class="text-2xl font-bold text-gray-800">User Management</h2>
+<p class="text-gray-600">Manage user accounts and permissions</p>
+</div>
+<button id="addUserBtn" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-all">
+<i class="ri-add-line mr-2"></i>Add User
+</button>
+</div>
+
+<!-- Users Table -->
+<div class="bg-white rounded-lg shadow-sm border overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Login</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="flex-shrink-0 h-10 w-10">
+<div class="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold">A</div>
+</div>
+<div class="ml-4">
+<div class="text-sm font-medium text-gray-900">Admin User</div>
+<div class="text-sm text-gray-500">admin@solvatree.com</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Administrator</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="status-badge status-active">Active</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+2 hours ago
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<div class="flex space-x-2">
+<button class="text-primary hover:text-primary/80">
+<i class="ri-edit-line"></i>
+</button>
+<button class="text-red-600 hover:text-red-800">
+<i class="ri-delete-bin-line"></i>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Media Management Section -->
+<div id="media-section" class="admin-section hidden">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h2 class="text-2xl font-bold text-gray-800">Media Library</h2>
+<p class="text-gray-600">Manage images, documents, and other media files</p>
+</div>
+<button id="uploadMediaBtn" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-all">
+<i class="ri-upload-line mr-2"></i>Upload Media
+</button>
+</div>
+
+<!-- Media Grid -->
+<div class="bg-white rounded-lg shadow-sm border p-6">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+<div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300 hover:border-primary transition-colors cursor-pointer">
+<div class="text-center">
+<i class="ri-image-add-line text-2xl text-gray-400 mb-2"></i>
+<p class="text-xs text-gray-500">Upload Image</p>
+</div>
+</div>
+<div class="aspect-square bg-gray-200 rounded-lg flex items-center justify-center">
+<i class="ri-image-line text-3xl text-gray-400"></i>
+</div>
+<div class="aspect-square bg-gray-200 rounded-lg flex items-center justify-center">
+<i class="ri-image-line text-3xl text-gray-400"></i>
+</div>
+<div class="aspect-square bg-gray-200 rounded-lg flex items-center justify-center">
+<i class="ri-image-line text-3xl text-gray-400"></i>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</main>
+</div>
+
+<!-- Project Modal -->
+<div id="projectModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div class="flex items-center justify-center min-h-screen p-4">
+<div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+<div class="p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 id="projectModalTitle" class="text-xl font-bold text-gray-800">Add New Project</h3>
+<button id="closeProjectModal" class="text-gray-400 hover:text-gray-600">
+<i class="ri-close-line text-xl"></i>
+</button>
+</div>
+<form id="projectForm" class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Project Title *</label>
+<input type="text" name="title" required class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Category *</label>
+<select name="category" required class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+<option value="">Select Category</option>
+<option value="wordpress">WordPress</option>
+<option value="fullstack">Full Stack</option>
+<option value="ecommerce">E-commerce</option>
+<option value="ai">AI & ML</option>
+<option value="mobile">Mobile</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Description *</label>
+<textarea name="description" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Client *</label>
+<input type="text" name="client" required class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Duration</label>
+<input type="text" name="duration" placeholder="e.g., 6 weeks" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Live URL</label>
+<input type="url" name="liveUrl" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">GitHub URL</label>
+<input type="url" name="githubUrl" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Technologies (comma-separated)</label>
+<input type="text" name="technologies" placeholder="React, Node.js, MongoDB" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<div class="flex items-center space-x-4">
+<label class="flex items-center">
+<input type="checkbox" name="featured" class="rounded border-gray-300 text-primary focus:ring-primary">
+<span class="ml-2 text-sm text-gray-700">Featured Project</span>
+</label>
+<label class="flex items-center">
+<input type="checkbox" name="active" checked class="rounded border-gray-300 text-primary focus:ring-primary">
+<span class="ml-2 text-sm text-gray-700">Active</span>
+</label>
+</div>
+<div class="flex justify-end space-x-3 pt-4">
+<button type="button" id="cancelProject" class="px-4 py-2 text-gray-700 border border-gray-300 rounded-button hover:bg-gray-50 transition-all">
+Cancel
+</button>
+<button type="submit" class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-all">
+Save Project
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Review Modal -->
+<div id="reviewModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div class="flex items-center justify-center min-h-screen px-4">
+<div class="bg-white rounded-lg w-full max-w-2xl max-h-screen overflow-y-auto">
+<div class="flex justify-between items-center p-6 border-b">
+<h3 id="reviewModalTitle" class="text-xl font-bold text-gray-800">Add New Review</h3>
+<button id="closeReviewModal" class="text-gray-400 hover:text-gray-600">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<form id="reviewForm" class="p-6 space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+<input type="text" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Position</label>
+<input type="text" name="position" required class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Rating</label>
+<select name="rating" required class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+<option value="">Select Rating</option>
+<option value="5">5 Stars</option>
+<option value="4">4 Stars</option>
+<option value="3">3 Stars</option>
+<option value="2">2 Stars</option>
+<option value="1">1 Star</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Project</label>
+<input type="text" name="project" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Related project (optional)">
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Review Comment</label>
+<textarea name="comment" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Write the review comment..."></textarea>
+</div>
+<div class="flex items-center space-x-4">
+<label class="flex items-center">
+<input type="checkbox" name="featured" class="rounded border-gray-300 text-primary focus:ring-primary">
+<span class="ml-2 text-sm text-gray-700">Featured Review</span>
+</label>
+<label class="flex items-center">
+<input type="checkbox" name="active" checked class="rounded border-gray-300 text-primary focus:ring-primary">
+<span class="ml-2 text-sm text-gray-700">Active</span>
+</label>
+</div>
+<div class="flex justify-end space-x-3 pt-4">
+<button type="button" id="cancelReview" class="px-4 py-2 text-gray-700 border border-gray-300 rounded-button hover:bg-gray-50 transition-all">
+Cancel
+</button>
+<button type="submit" class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-all">
+Save Review
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<!-- Scripts -->
+<script src="js/portfolio-admin.js"></script>
+</body>
+</html>

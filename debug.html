@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debug - SolvaTree</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
+<body class="bg-white">
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Debug Page</h1>
+    <p class="text-gray-600">Check the browser console for debug messages.</p>
+</div>
+
+<!-- Preloader -->
+<div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white">
+<div class="relative w-24 h-24">
+<div class="absolute top-0 left-0 w-full h-full border-8 border-gray-200 rounded-full"></div>
+<div class="absolute top-0 left-0 w-full h-full border-8 border-primary border-t-transparent rounded-full animate-spin"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-['Pacifico'] text-primary">S</div>
+</div>
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="js/main-debug.js"></script>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Company Info -->
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h3 class="text-xl font-['Pacifico'] text-white mb-6">SolvaTree</h3>
+                <p class="text-gray-400 mb-6">Your complete solution point for web development, digital marketing, and AI integration services.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-twitter-x-line ri-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-linkedin-fill ri-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-github-fill ri-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-instagram-line ri-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                    <li><a href="portfolio.html" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+                    <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Services -->
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <h3 class="text-lg font-semibold mb-6">Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">WordPress Development</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Full Stack Development</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">AI Integration</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">E-commerce Solutions</a></li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <h3 class="text-lg font-semibold mb-6">Contact</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                            <i class="ri-mail-line text-primary"></i>
+                        </div>
+                        <span class="text-gray-400">info@solvatree.com</span>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                            <i class="ri-phone-line text-primary"></i>
+                        </div>
+                        <span class="text-gray-400">+234 801 234 5678</span>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                            <i class="ri-map-pin-line text-primary"></i>
+                        </div>
+                        <span class="text-gray-400">Lagos, Nigeria</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Newsletter -->
+        <div class="border-t border-gray-800 pt-8 pb-4">
+            <div class="max-w-xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+                <h3 class="text-lg font-semibold mb-4 text-center">Subscribe to Our Newsletter</h3>
+                <form id="newsletterForm" class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Your email address" class="flex-1 bg-gray-800 text-white border-none !rounded-button px-4 py-2 focus:ring-2 focus:ring-primary" required>
+                    <button type="submit" class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Subscribe</button>
+                </form>
+                <div id="newsletterSuccess" class="hidden mt-4 p-2 bg-green-800 text-white text-center rounded-md">
+                    Thank you for subscribing! You'll receive updates soon.
+                </div>
+            </div>
+        </div>
+        <!-- Copyright -->
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p class="text-gray-500">© 2025 SolvaTree. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

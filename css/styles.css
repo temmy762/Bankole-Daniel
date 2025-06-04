@@ -1,0 +1,559 @@
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.hero-section {
+    background-image: url('https://readdy.ai/api/search-image?query=professional%2520workspace%2520with%2520modern%2520computer%2520setup%2C%2520clean%2520desk%2520with%2520plants%2C%2520green%2520accents%2C%2520natural%2520light%2C%2520minimalist%2520design%2C%2520tech%2520workspace%2C%2520gradient%2520from%2520white%2520on%2520left%2520to%2520subtle%2520green%2520tones%2520on%2520right%2C%2520perfect%2520for%2520text%2520overlay%2520on%2520left%2520side&width=1920&height=1080&seq=hero1&orientation=landscape');
+    background-size: cover;
+    background-position: center right;
+}
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #0F9D58;
+}
+.custom-checkbox {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+}
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+}
+.custom-checkbox:hover input ~ .checkmark {
+    border-color: #0F9D58;
+}
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: #0F9D58;
+    border-color: #0F9D58;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+.custom-checkbox .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(15, 157, 88, 0.1);
+}
+.tab-active {
+    color: #0F9D58;
+    border-bottom: 2px solid #0F9D58;
+}
+
+/* Testimonial Slider */
+.testimonial-slider {
+    position: relative;
+}
+
+.testimonial-dot {
+    transition: background-color 0.3s ease;
+}
+
+.testimonial-dot.active {
+    background-color: #0F9D58;
+}
+
+/* Testimonial styles */
+.testimonial-dot {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.testimonial-dot.active {
+    background-color: #0f9d58;
+    transform: scale(1.2);
+}
+
+.testimonial-dot:hover {
+    background-color: #0f9d58;
+    transform: scale(1.1);
+}
+
+.testimonial-wrapper {
+    transition: transform 0.5s ease;
+}
+
+/* Dark mode styles */
+.dark body {
+    background-color: #1a1a1a;
+    color: #f3f4f6;
+}
+
+.dark .bg-white {
+    background-color: #2d2d2d;
+}
+
+.dark .text-secondary {
+    color: #f3f4f6;
+}
+
+.dark .text-gray-700 {
+    color: #d1d5db;
+}
+
+.dark .border-gray-100 {
+    border-color: #374151;
+}
+
+.dark .bg-gray-50 {
+    background-color: #1f1f1f;
+}
+
+.dark .bg-gray-100 {
+    background-color: #374151;
+}
+
+.dark .text-gray-600 {
+    color: #9ca3af;
+}
+
+.dark .shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromBottom {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 1s ease forwards;
+}
+
+.animate-slideInLeft {
+    animation: slideInFromLeft 1s ease forwards;
+}
+
+.animate-slideInRight {
+    animation: slideInFromRight 1s ease forwards;
+}
+
+.animate-slideInBottom {
+    animation: slideInFromBottom 1s ease forwards;
+}
+
+/* Skill bars */
+.skill-bar {
+    height: 10px;
+    background-color: #e5e7eb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.skill-progress {
+    height: 100%;
+    background-color: #0F9D58;
+    border-radius: 5px;
+    width: 0;
+    transition: width 1.5s ease-in-out;
+}
+
+/* Project hover effects */
+.project-card .project-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(15, 157, 88, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+/* Typing effect */
+.typing-text::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Preloader */
+#preloader {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Floating contact button pulse effect */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(15, 157, 88, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(15, 157, 88, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(15, 157, 88, 0); }
+}
+
+#floatingContactBtn {
+    animation: pulse 2s infinite;
+}
+
+/* Counter animation */
+.counter-box {
+    transition: transform 0.3s ease;
+}
+
+.counter-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Image hover effects */
+.hover-zoom {
+    overflow: hidden;
+}
+
+.hover-zoom img {
+    transition: transform 0.5s ease;
+}
+
+.hover-zoom:hover img {
+    transform: scale(1.05);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0F9D58;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0b7e47;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #2d2d2d;
+}
+
+/* Tab animations */
+.project-filter-btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-filter-btn.active {
+    background-color: #0F9D58;
+    color: white;
+}
+
+/* Social icons hover animation */
+footer .flex.space-x-4 a {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+footer .flex.space-x-4 a:hover {
+    transform: translateY(-3px);
+}
+
+/* Enhanced About Section Styles */
+.bg-grid-pattern {
+    background-image: radial-gradient(circle, #0f9d58 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.tech-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: default;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid transparent;
+}
+
+.tech-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0f9d58 0%, #34a853 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 4px 15px rgba(15, 157, 88, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(15, 157, 88, 0.4);
+    background: linear-gradient(135deg, #0b7e47 0%, #2d8f47 100%);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: white;
+    color: #0f9d58;
+    border: 2px solid #0f9d58;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(15, 157, 88, 0.1);
+}
+
+.btn-secondary:hover {
+    background: #0f9d58;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(15, 157, 88, 0.3);
+    text-decoration: none;
+}
+
+/* Enhanced counter animations */
+.counter-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.counter-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.counter-box:hover::before {
+    left: 100%;
+}
+
+/* Enhanced hover effects for expertise cards */
+.expertise-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating animation for badges */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse animation for icons */
+.animate-pulse-slow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smooth reveal animation */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+/* Professional gradient text effect */
+.gradient-text {
+    background: linear-gradient(135deg, #0f9d58 0%, #34a853 50%, #0f9d58 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Enhanced shadow effects */
+.shadow-elegant {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-elegant:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Professional image overlay effects */
+.image-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(15, 157, 88, 0.1) 0%, rgba(52, 168, 83, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-overlay:hover::after {
+    opacity: 1;
+}
+
+/* Scroll to Top Button */
+#scrollToTop {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+#scrollToTop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(15, 157, 88, 0.4);
+}
+
+/* Floating Contact Button */
+#floatingContactBtn {
+    animation: pulse 2s infinite;
+    backdrop-filter: blur(10px);
+}
+
+/* Contact Form Modal */
+#contactFormModal {
+    backdrop-filter: blur(5px);
+}
+
+#contactFormModal .bg-white {
+    transition: all 0.3s ease;
+}
+
+#contactFormModal input,
+#contactFormModal textarea {
+    transition: border-color 0.3s ease;
+}
+
+#contactFormModal input:focus,
+#contactFormModal textarea:focus {
+    border-color: #0F9D58;
+    box-shadow: 0 0 0 3px rgba(15, 157, 88, 0.1);
+}
+
+/* Theme Toggle Button */
+#themeToggle {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+#themeToggle:hover {
+    transform: rotate(360deg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    .dark body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+    
+    .dark header {
+        background-color: #2d2d2d;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Responsive improvements for new elements */
+@media (max-width: 768px) {
+    #floatingContactBtn {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    #scrollToTop {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    #themeToggle {
+        top: 80px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    #contactFormModal .bg-white {
+        margin: 20px;
+        max-width: calc(100% - 40px);
+    }
+}

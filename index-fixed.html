@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SolvaTree - FIXED VERSION</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0F9D58',secondary:'#333333'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+/* Critical CSS for preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #0F9D58;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body class="bg-white font-['Inter']">
+
+<!-- CRITICAL: Preloader with simple structure -->
+<div id="preloader">
+    <div class="text-center">
+        <div class="spinner mb-4"></div>
+        <div class="text-2xl font-['Pacifico'] text-primary">SolvaTree</div>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<a href="#" class="text-2xl font-['Pacifico'] text-primary">SolvaTree</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#" class="text-secondary font-medium hover:text-primary transition-colors">Home</a>
+<a href="#" class="text-secondary font-medium hover:text-primary transition-colors">About</a>
+<a href="#" class="text-secondary font-medium hover:text-primary transition-colors">Services</a>
+<a href="#" class="text-secondary font-medium hover:text-primary transition-colors">Portfolio</a>
+<a href="#" class="text-secondary font-medium hover:text-primary transition-colors">Contact</a>
+</nav>
+<a href="#" class="hidden md:block bg-primary text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-all">Get in Touch</a>
+<button id="mobileMenuBtn" class="md:hidden">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="pt-32 pb-20 bg-gradient-to-br from-green-50 to-blue-50">
+<div class="container mx-auto px-4 text-center">
+<h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+Daniel Bankole Oriyomi
+</h1>
+<p class="text-xl md:text-2xl text-gray-600 mb-8">
+WordPress Expert & Full Stack Developer
+</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a href="#" class="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all">
+View My Work
+</a>
+<a href="#" class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all">
+Get in Touch
+</a>
+</div>
+</div>
+</section>
+
+<!-- About Section -->
+<section class="py-20">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-800 mb-4">About Me</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+I'm a passionate developer with expertise in WordPress development and full-stack web solutions.
+</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+<h3 class="text-2xl font-bold text-gray-800 mb-6">My Expertise</h3>
+<div class="space-y-4">
+<div class="flex items-center">
+<i class="ri-check-line text-primary text-xl mr-3"></i>
+<span>WordPress Development & Customization</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-primary text-xl mr-3"></i>
+<span>Full Stack Web Development</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-primary text-xl mr-3"></i>
+<span>React & Node.js Applications</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-primary text-xl mr-3"></i>
+<span>E-commerce Solutions</span>
+</div>
+</div>
+</div>
+<div class="text-center">
+<div class="bg-white rounded-2xl shadow-xl p-8 inline-block">
+<img src="https://via.placeholder.com/200x200/0F9D58/ffffff?text=DB" alt="Daniel Bankole" class="w-48 h-48 rounded-full mx-auto mb-4">
+<h4 class="text-xl font-semibold text-gray-800">Daniel Bankole Oriyomi</h4>
+<p class="text-gray-600">WordPress Expert & Full Stack Developer</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Services Section -->
+<section class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-800 mb-4">Services</h2>
+<p class="text-xl text-gray-600">What I can do for you</p>
+</div>
+
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white p-8 rounded-xl shadow-lg text-center">
+<i class="ri-wordpress-line text-4xl text-primary mb-4"></i>
+<h3 class="text-xl font-bold text-gray-800 mb-4">WordPress Development</h3>
+<p class="text-gray-600">Custom WordPress themes, plugins, and website development.</p>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg text-center">
+<i class="ri-code-line text-4xl text-primary mb-4"></i>
+<h3 class="text-xl font-bold text-gray-800 mb-4">Full Stack Development</h3>
+<p class="text-gray-600">Complete web applications using modern technologies.</p>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg text-center">
+<i class="ri-shopping-cart-line text-4xl text-primary mb-4"></i>
+<h3 class="text-xl font-bold text-gray-800 mb-4">E-commerce Solutions</h3>
+<p class="text-gray-600">Online stores and e-commerce platforms that convert.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-20">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-800 mb-4">Let's Work Together</h2>
+<p class="text-xl text-gray-600">Ready to start your next project?</p>
+</div>
+
+<div class="max-w-2xl mx-auto text-center">
+<div class="bg-gradient-to-r from-primary to-green-600 text-white p-8 rounded-2xl">
+<h3 class="text-2xl font-bold mb-4">Get in Touch</h3>
+<p class="mb-6">Let's discuss your project and bring your ideas to life!</p>
+<a href="#" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all inline-block">
+Contact Me Now
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Company Info -->
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h3 class="text-xl font-['Pacifico'] text-white mb-6">SolvaTree</h3>
+                <p class="text-gray-400 mb-6">Your complete solution point for web development, digital marketing, and AI integration services.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-twitter-x-line ri-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-linkedin-fill ri-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-github-fill ri-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-instagram-line ri-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                    <li><a href="portfolio.html" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+                    <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Services -->
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <h3 class="text-lg font-semibold mb-6">Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">WordPress Development</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Full Stack Development</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">AI Integration</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">E-commerce Solutions</a></li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <h3 class="text-lg font-semibold mb-6">Contact</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                            <i class="ri-mail-line text-primary"></i>
+                        </div>
+                        <span class="text-gray-400">info@solvatree.com</span>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                            <i class="ri-phone-line text-primary"></i>
+                        </div>
+                        <span class="text-gray-400">+234 801 234 5678</span>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                            <i class="ri-map-pin-line text-primary"></i>
+                        </div>
+                        <span class="text-gray-400">Lagos, Nigeria</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Newsletter -->
+        <div class="border-t border-gray-800 pt-8 pb-4">
+            <div class="max-w-xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+                <h3 class="text-lg font-semibold mb-4 text-center">Subscribe to Our Newsletter</h3>
+                <form id="newsletterForm" class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Your email address" class="flex-1 bg-gray-800 text-white border-none !rounded-button px-4 py-2 focus:ring-2 focus:ring-primary" required>
+                    <button type="submit" class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Subscribe</button>
+                </form>
+                <div id="newsletterSuccess" class="hidden mt-4 p-2 bg-green-800 text-white text-center rounded-md">
+                    Thank you for subscribing! You'll receive updates soon.
+                </div>
+            </div>
+        </div>
+        <!-- Copyright -->
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p class="text-gray-500">© 2025 SolvaTree. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- CRITICAL: Simple, reliable JavaScript -->
+<script>
+console.log('🚀 Website loading...');
+
+// CRITICAL: Preloader management - this MUST work
+function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        console.log('✅ Hiding preloader');
+        preloader.classList.add('hidden');
+        
+        // Fallback: force hide after animation
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 600);
+    }
+}
+
+// Hide preloader when page is loaded
+window.addEventListener('load', function() {
+    console.log('✅ Page loaded');
+    setTimeout(hidePreloader, 800);
+});
+
+// Fallback: hide preloader after maximum 3 seconds
+setTimeout(function() {
+    console.log('⚠️ Fallback: Force hiding preloader');
+    hidePreloader();
+}, 3000);
+
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ DOM ready');
+    
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            console.log('📱 Mobile menu clicked');
+            // Add mobile menu functionality here if needed
+        });
+    }
+});
+
+console.log('✅ Script loaded successfully');
+</script>
+
+</body>
+</html>

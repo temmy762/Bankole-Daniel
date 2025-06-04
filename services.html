@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Professional Digital Solutions | SolvaTree</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#0F9D58',secondary:'#333333',accent:'#FF6B6B'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
+<body class="bg-gray-50 font-['Inter']">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-['Pacifico'] text-primary">SolvaTree</a>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link text-secondary font-medium hover:text-primary transition-colors">Home</a>
+                <a href="about.html" class="nav-link text-secondary font-medium hover:text-primary transition-colors">About</a>
+                <a href="services.html" class="nav-link text-primary font-semibold border-b-2 border-primary">Services</a>
+                <a href="portfolio.html" class="nav-link text-secondary font-medium hover:text-primary transition-colors">Portfolio</a>
+                <a href="contact.html" class="nav-link text-secondary font-medium hover:text-primary transition-colors">Contact</a>
+            </nav>
+            <a href="contact.html" class="hidden md:block bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Get Started</a>
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-secondary">
+                <i class="ri-menu-line ri-lg"></i>
+            </button>
+        </div>
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full transform -translate-y-full opacity-0 transition-all duration-300 invisible">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="text-secondary font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Home</a>
+                <a href="about.html" class="text-secondary font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">About</a>
+                <a href="services.html" class="text-primary font-semibold py-2 border-b border-gray-100">Services</a>
+                <a href="portfolio.html" class="text-secondary font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Portfolio</a>
+                <a href="contact.html" class="text-secondary font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Contact</a>
+                <a href="contact.html" class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all text-center">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-blue-50">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, rgba(15, 157, 88, 0.05) 0%, transparent 25%), radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.05) 0%, transparent 25%);"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Badge -->
+                <div class="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    <span>Professional Digital Solutions</span>
+                </div>
+                
+                <!-- Main Heading -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <span class="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">Comprehensive</span><br>
+                    <span class="text-gray-900">Digital Services</span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    From cutting-edge web development to AI-powered solutions, we deliver 
+                    <span class="font-semibold text-primary">end-to-end digital transformation</span> 
+                    that drives your business forward.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <a href="#services-grid" class="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all transform hover:scale-105 hover:shadow-lg">
+                        Explore Services
+                    </a>
+                    <a href="contact.html" class="border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all">
+                        Start Your Project
+                    </a>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span>100+ Projects Delivered</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                        <span>15+ Countries Served</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+                        <span>99.9% Client Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services-grid" class="py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-20" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Our <span class="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">Core Services</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Comprehensive digital solutions designed to transform your business and accelerate growth in the modern digital landscape.
+                </p>
+            </div>
+
+            <!-- Service Cards Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <!-- WordPress Development -->
+                <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary/20 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="ri-wordpress-fill text-2xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors">WordPress Development</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Custom WordPress solutions from simple blogs to complex e-commerce platforms. We specialize in performance optimization, security hardening, and scalable architecture that grows with your business.
+                            </p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Custom Theme Development</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Plugin Development & Integration</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Performance Optimization</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                    <span class="text-sm text-gray-600">WooCommerce E-commerce</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500 font-medium">Starting from $2,500</span>
+                                <a href="contact.html" class="inline-flex items-center text-primary font-semibold hover:text-primary/80 transition-colors">
+                                    Get Quote
+                                    <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Stack Development -->
+                <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-blue-500/20 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="ri-code-s-slash-line text-2xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">Full Stack Development</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                End-to-end web application development using cutting-edge technologies. From responsive frontends to robust backends, we create scalable solutions that deliver exceptional user experiences.
+                            </p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-600">React, Vue.js, Angular Frontend</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Node.js, Python, PHP Backend</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Database Design & Optimization</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-600">API Development & Integration</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500 font-medium">Starting from $5,000</span>
+                                <a href="contact.html" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-500 transition-colors">
+                                    Get Quote
+                                    <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Integration & Chatbots -->
+                <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-purple-500/20 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="ri-robot-line text-2xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">AI Integration & Chatbots</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Intelligent AI solutions that enhance customer experience and automate business processes. From smart chatbots to machine learning integrations that drive business intelligence.
+                            </p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Custom AI Chatbot Development</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-600">OpenAI & GPT Integration</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Machine Learning Solutions</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Automation & Analytics</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500 font-medium">Starting from $3,500</span>
+                                <a href="contact.html" class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-500 transition-colors">
+                                    Get Quote
+                                    <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Marketing -->
+                <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-accent/20 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-gradient-to-br from-accent to-accent/80 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="ri-megaphone-line text-2xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-accent transition-colors">Digital Marketing</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Comprehensive digital marketing strategies that drive traffic, generate leads, and boost conversions. From SEO to social media management and PPC campaigns.
+                            </p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-accent rounded-full"></div>
+                                    <span class="text-sm text-gray-600">SEO & Content Optimization</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-accent rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Social Media Management</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-accent rounded-full"></div>
+                                    <span class="text-sm text-gray-600">PPC & Advertising Campaigns</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-accent rounded-full"></div>
+                                    <span class="text-sm text-gray-600">Analytics & Reporting</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500 font-medium">Starting from $1,500/month</span>
+                                <a href="contact.html" class="inline-flex items-center text-accent font-semibold hover:text-accent/80 transition-colors">
+                                    Get Quote
+                                    <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- E-commerce Solutions -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary/20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-shopping-cart-line text-xl text-green-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">E-commerce Solutions</h4>
+                    <p class="text-gray-600 text-sm mb-4">Complete online store development with secure payment integration and inventory management.</p>
+                    <span class="text-primary font-semibold text-sm">From $3,000</span>
+                </div>
+
+                <!-- Mobile App Development -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary/20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-smartphone-line text-xl text-blue-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Mobile App Development</h4>
+                    <p class="text-gray-600 text-sm mb-4">Cross-platform mobile applications using React Native and Flutter for iOS and Android.</p>
+                    <span class="text-primary font-semibold text-sm">From $7,500</span>
+                </div>
+
+                <!-- Cloud Solutions -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary/20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-cloud-line text-xl text-purple-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Cloud Solutions</h4>
+                    <p class="text-gray-600 text-sm mb-4">AWS, Azure, and Google Cloud deployment, migration, and infrastructure management.</p>
+                    <span class="text-primary font-semibold text-sm">From $2,000</span>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary/20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-palette-line text-xl text-yellow-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">UI/UX Design</h4>
+                    <p class="text-gray-600 text-sm mb-4">User-centered design solutions that enhance user experience and drive conversions.</p>
+                    <span class="text-primary font-semibold text-sm">From $1,800</span>
+                </div>
+
+                <!-- API Development -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary/20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-code-box-line text-xl text-indigo-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">API Development</h4>
+                    <p class="text-gray-600 text-sm mb-4">RESTful and GraphQL API development for seamless third-party integrations.</p>
+                    <span class="text-primary font-semibold text-sm">From $2,500</span>
+                </div>
+
+                <!-- Maintenance & Support -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary/20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-tools-line text-xl text-red-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Maintenance & Support</h4>
+                    <p class="text-gray-600 text-sm mb-4">Ongoing maintenance, security updates, and technical support for your digital assets.</p>
+                    <span class="text-primary font-semibold text-sm">From $500/month</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Development Process</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    A proven methodology that ensures successful project delivery from concept to launch
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="relative mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                            <span class="text-white font-bold text-lg">1</span>
+                        </div>
+                        <div class="absolute top-8 left-1/2 w-full h-0.5 bg-gray-200 -z-10 hidden lg:block"></div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Discovery & Planning</h3>
+                    <p class="text-gray-600">Understanding your business goals, target audience, and technical requirements</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="relative mb-6">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                            <span class="text-white font-bold text-lg">2</span>
+                        </div>
+                        <div class="absolute top-8 left-1/2 w-full h-0.5 bg-gray-200 -z-10 hidden lg:block"></div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Design & Prototype</h3>
+                    <p class="text-gray-600">Creating wireframes, mockups, and interactive prototypes for validation</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="relative mb-6">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                            <span class="text-white font-bold text-lg">3</span>
+                        </div>
+                        <div class="absolute top-8 left-1/2 w-full h-0.5 bg-gray-200 -z-10 hidden lg:block"></div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Development & Testing</h3>
+                    <p class="text-gray-600">Agile development with continuous testing and quality assurance</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="relative mb-6">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                            <span class="text-white font-bold text-lg">4</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Launch & Support</h3>
+                    <p class="text-gray-600">Deployment to production with ongoing maintenance and support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Technologies We Use</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Cutting-edge technologies and frameworks to build robust, scalable solutions
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <!-- Technology icons would go here -->
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-white rounded-xl shadow-md flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i class="ri-reactjs-line text-2xl text-blue-500"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">React</span>
+                </div>
+
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-white rounded-xl shadow-md flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i class="ri-nodejs-line text-2xl text-green-600"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">Node.js</span>
+                </div>
+
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-white rounded-xl shadow-md flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i class="ri-database-2-line text-2xl text-orange-500"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">MongoDB</span>
+                </div>
+
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-white rounded-xl shadow-md flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i class="ri-wordpress-line text-2xl text-blue-700"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">WordPress</span>
+                </div>
+
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                    <div class="w-16 h-16 bg-white rounded-xl shadow-md flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i class="ri-brain-line text-2xl text-purple-600"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">AI/ML</span>
+                </div>
+
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <div class="w-16 h-16 bg-white rounded-xl shadow-md flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i class="ri-cloud-line text-2xl text-gray-600"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">AWS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-primary to-blue-600 text-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, white 2px, transparent 2px), radial-gradient(circle at 75% 75%, white 2px, transparent 2px); background-size: 60px 60px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Transform Your Business?</h2>
+                <p class="text-xl mb-8 opacity-90 leading-relaxed">
+                    Let's discuss your project and create a digital solution that drives real results for your business.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-white text-primary px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
+                        Start Your Project
+                    </a>
+                    <a href="portfolio.html" class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-primary transition-all">
+                        View Our Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <h3 class="text-xl font-['Pacifico'] text-white mb-6">SolvaTree</h3>
+                    <p class="text-gray-400 mb-6">Your complete solution point for web development, digital marketing, and AI integration services.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-twitter-x-line ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-linkedin-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-github-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-instagram-line ri-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Services -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h3 class="text-lg font-semibold mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">WordPress Development</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Full Stack Development</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">AI Integration</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">E-commerce Solutions</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <h3 class="text-lg font-semibold mb-6">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-mail-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-400">info@solvatree.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-phone-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-400">+234 801 234 5678</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-map-pin-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-400">Lagos, Nigeria</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Newsletter -->
+            <div class="border-t border-gray-800 pt-8 pb-4">
+                <div class="max-w-xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+                    <h3 class="text-lg font-semibold mb-4 text-center">Subscribe to Our Newsletter</h3>
+                    <form id="newsletterForm" class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" placeholder="Your email address" class="flex-1 bg-gray-800 text-white border-none !rounded-button px-4 py-2 focus:ring-2 focus:ring-primary" required>
+                        <button type="submit" class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Subscribe</button>
+                    </form>
+                    <div id="newsletterSuccess" class="hidden mt-4 p-2 bg-green-800 text-white text-center rounded-md">
+                        Thank you for subscribing! You'll receive updates soon.
+                    </div>
+                </div>
+            </div>
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-500">© 2025 SolvaTree. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isVisible = mobileMenu.classList.contains('opacity-100');
+            
+            if (isVisible) {
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'visible');
+                mobileMenu.classList.add('opacity-0', '-translate-y-full', 'invisible');
+            } else {
+                mobileMenu.classList.remove('opacity-0', '-translate-y-full', 'invisible');
+                mobileMenu.classList.add('opacity-100', 'translate-y-0', 'visible');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form handling
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterSuccess = document.getElementById('newsletterSuccess');
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                newsletterSuccess.classList.remove('hidden');
+                this.reset();
+                
+                setTimeout(() => {
+                    newsletterSuccess.classList.add('hidden');
+                }, 5000);
+            });
+        }
+
+        // Service card hover effects
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

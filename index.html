@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SolvaTree - WordPress Expert & Full Stack Developer</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0F9D58',secondary:'#333333'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<!-- AOS Animation Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<a href="index.html" class="text-2xl font-['Pacifico'] text-primary">SolvaTree</a>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center space-x-8">
+<a href="index.html" class="nav-link text-secondary font-medium hover:text-primary transition-colors">Home</a>
+<a href="about.html" class="nav-link text-secondary font-medium hover:text-primary transition-colors">About</a>
+<a href="services.html" class="nav-link text-secondary font-medium hover:text-primary transition-colors">Services</a>
+<a href="portfolio.html" class="nav-link text-secondary font-medium hover:text-primary transition-colors">Portfolio</a>
+<a href="contact.html" class="nav-link text-secondary font-medium hover:text-primary transition-colors">Contact</a>
+</nav>
+<a href="contact.html" class="hidden md:block bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Get in Touch</a>
+<!-- Mobile Menu Button -->
+<button id="mobileMenuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-secondary">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+<!-- Mobile Navigation -->
+<div id="mobileMenu" class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full transform -translate-y-full opacity-0 transition-all duration-300 invisible">
+<div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+<a href="index.html" class="text-secondary font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Home</a>
+<a href="about.html" class="text-secondary font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">About</a>
+<a href="services.html" class="text-secondary font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Services</a>
+<a href="portfolio.html" class="text-secondary font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Portfolio</a>
+<a href="contact.html" class="text-secondary font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Contact</a>
+<a href="contact.html" class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all text-center">Get in Touch</a>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero-section pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+<!-- Particles Background -->
+<div id="particles-js" class="absolute inset-0 z-0"></div>
+<div class="container mx-auto px-4 w-full relative z-10">
+<div class="max-w-2xl" data-aos="fade-right" data-aos-duration="1000">
+<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-4">
+  <span class="typing-text">WordPress Expert</span> & Full Stack Developer
+</h1>
+<p class="text-lg md:text-xl text-gray-700 mb-8">Building digital solutions that scale your business and drive results. Founder of SolvaTree – Your Complete Solution Point.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="portfolio.html" class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all text-center">View Portfolio</a>
+<a href="contact.html" class="bg-white text-primary border border-primary px-8 py-3 !rounded-button whitespace-nowrap hover:bg-gray-50 transition-all text-center">Get in Touch</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Enhanced About Section -->
+<section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+      <div class="inline-block bg-primary bg-opacity-10 text-primary px-6 py-2 rounded-full text-sm font-semibold mb-4 transform hover:scale-105 transition-transform">
+        💼 Professional Profile
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-6">
+        About <span class="text-primary">Daniel Bankole Oriyomi</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Transforming ideas into digital reality with over 8 years of expertise in web development and innovative solutions
+      </p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      
+      <!-- Left Column - Image & Stats -->
+      <div class="space-y-8" data-aos="fade-right" data-aos-duration="1200">
+        <!-- Professional Image -->
+        <div class="relative group">
+          <div class="absolute -inset-4 bg-gradient-to-r from-primary to-green-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+          <img src="https://readdy.ai/api/search-image?query=professional%2520African%2520man%2520in%2520business%2520casual%2520attire%2C%2520smiling%2520confidently%2C%2520modern%2520office%2520setting%2C%2520tech%2520environment%2C%2520clean%2520background%2C%2520high%2520quality%2520professional%2520headshot%2C%2520natural%2520lighting%2C%2520subtle%2520green%2520elements%2520in%2520background&width=600&height=600&seq=profile1&orientation=squarish" 
+               alt="Daniel Bankole Oriyomi" 
+               class="relative w-full h-auto rounded-2xl shadow-2xl transform group-hover:scale-105 transition-transform duration-700">
+          
+          <!-- Floating Badge -->
+          <div class="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg animate-bounce">
+            <div class="text-2xl">🚀</div>
+          </div>
+        </div>
+
+        <!-- Company Partnerships -->
+        <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+          <h4 class="text-lg font-semibold text-gray-800 mb-4 text-center">Trusted by Industry Leaders</h4>
+          <div class="flex justify-center items-center space-x-6 opacity-70 hover:opacity-100 transition-opacity">
+            <img src="https://img.shields.io/badge/Microsoft-0078D4?style=for-the-badge&logo=microsoft&logoColor=white" alt="Microsoft" class="h-8 transform hover:scale-110 transition-transform">
+            <img src="https://img.shields.io/badge/Google-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google" class="h-8 transform hover:scale-110 transition-transform">
+            <img src="https://img.shields.io/badge/Meta-1877F2?style=for-the-badge&logo=meta&logoColor=white" alt="Meta" class="h-8 transform hover:scale-110 transition-transform">
+          </div>
+        </div>
+
+        <!-- Enhanced Statistics -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gradient-to-br from-primary to-green-500 p-6 rounded-2xl text-white shadow-lg transform hover:scale-105 transition-all duration-300 counter-box group">
+            <div class="flex items-center justify-between mb-2">
+              <div class="text-3xl font-bold"><span class="counter" data-target="8">0</span>+</div>
+              <div class="text-2xl opacity-80 group-hover:animate-pulse">⏱️</div>
+            </div>
+            <div class="text-sm opacity-90">Years Experience</div>
+          </div>
+          
+          <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-6 rounded-2xl text-white shadow-lg transform hover:scale-105 transition-all duration-300 counter-box group">
+            <div class="flex items-center justify-between mb-2">
+              <div class="text-3xl font-bold"><span class="counter" data-target="200">0</span>+</div>
+              <div class="text-2xl opacity-80 group-hover:animate-pulse">🎯</div>
+            </div>
+            <div class="text-sm opacity-90">Projects Completed</div>
+          </div>
+          
+          <div class="bg-gradient-to-br from-orange-500 to-red-500 p-6 rounded-2xl text-white shadow-lg transform hover:scale-105 transition-all duration-300 counter-box group">
+            <div class="flex items-center justify-between mb-2">
+              <div class="text-3xl font-bold"><span class="counter" data-target="150">0</span>+</div>
+              <div class="text-2xl opacity-80 group-hover:animate-pulse">😊</div>
+            </div>
+            <div class="text-sm opacity-90">Happy Clients</div>
+          </div>
+          
+          <div class="bg-gradient-to-br from-teal-500 to-cyan-600 p-6 rounded-2xl text-white shadow-lg transform hover:scale-105 transition-all duration-300 counter-box group">
+            <div class="flex items-center justify-between mb-2">
+              <div class="text-3xl font-bold"><span class="counter" data-target="99">0</span>%</div>
+              <div class="text-2xl opacity-80 group-hover:animate-pulse">⭐</div>
+            </div>
+            <div class="text-sm opacity-90">Success Rate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Content -->
+      <div class="space-y-8" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+        
+        <!-- Bio Section -->
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            With over <strong class="text-primary">8 years of experience</strong> in web development and digital innovation, I specialize in creating <em>scalable, user-friendly solutions</em> that drive business growth and digital transformation.
+          </p>
+          <p class="text-gray-700 text-lg leading-relaxed mb-8">
+            As the founder of <strong class="text-primary">SolvaTree</strong>, I've helped numerous clients across various industries transform their digital presence through custom WordPress solutions, full-stack development, and strategic digital marketing.
+          </p>
+        </div>
+
+        <!-- Expertise Areas -->
+        <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+          <h4 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+            <span class="text-2xl mr-2">🎯</span> Core Expertise
+          </h4>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group">
+              <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i class="ri-wordpress-line text-primary text-lg"></i>
+              </div>
+              <div>
+                <h5 class="font-semibold text-gray-800">WordPress Expert</h5>
+                <p class="text-sm text-gray-600">Custom themes & WooCommerce</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group">
+              <div class="w-10 h-10 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i class="ri-code-s-slash-line text-blue-600 text-lg"></i>
+              </div>
+              <div>
+                <h5 class="font-semibold text-gray-800">Full Stack Dev</h5>
+                <p class="text-sm text-gray-600">MERN Stack & Modern JS</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group">
+              <div class="w-10 h-10 bg-purple-500 bg-opacity-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i class="ri-brain-line text-purple-600 text-lg"></i>
+              </div>
+              <div>
+                <h5 class="font-semibold text-gray-800">AI Integration</h5>
+                <p class="text-sm text-gray-600">Machine Learning & APIs</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group">
+              <div class="w-10 h-10 bg-green-500 bg-opacity-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i class="ri-rocket-2-line text-green-600 text-lg"></i>
+              </div>
+              <div>
+                <h5 class="font-semibold text-gray-800">Performance</h5>
+                <p class="text-sm text-gray-600">Optimization & Scaling</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+          <h4 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+            <span class="text-2xl mr-2">🛠️</span> Technology Stack
+          </h4>
+          <div class="flex flex-wrap gap-3">
+            <span class="tech-badge bg-blue-100 text-blue-800 hover:bg-blue-200">
+              <i class="ri-reactjs-line mr-1"></i>React
+            </span>
+            <span class="tech-badge bg-green-100 text-green-800 hover:bg-green-200">
+              <i class="ri-nodejs-line mr-1"></i>Node.js
+            </span>
+            <span class="tech-badge bg-yellow-100 text-yellow-800 hover:bg-yellow-200">
+              <i class="ri-javascript-line mr-1"></i>JavaScript
+            </span>
+            <span class="tech-badge bg-blue-100 text-blue-800 hover:bg-blue-200">
+              <i class="ri-database-line mr-1"></i>Python
+            </span>
+            <span class="tech-badge bg-indigo-100 text-indigo-800 hover:bg-indigo-200">
+              <i class="ri-wordpress-line mr-1"></i>WordPress
+            </span>
+            <span class="tech-badge bg-green-100 text-green-800 hover:bg-green-200">
+              <i class="ri-leaf-line mr-1"></i>MongoDB
+            </span>
+            <span class="tech-badge bg-orange-100 text-orange-800 hover:bg-orange-200">
+              <i class="ri-brain-line mr-1"></i>TensorFlow
+            </span>
+            <span class="tech-badge bg-purple-100 text-purple-800 hover:bg-purple-200">
+              <i class="ri-code-box-line mr-1"></i>Docker
+            </span>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="about.html" class="btn-primary group relative overflow-hidden">
+            <span class="relative z-10 flex items-center justify-center">
+              <i class="ri-user-line mr-2"></i>
+              Learn More About Me
+              <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </a>
+          <a href="portfolio.html" class="btn-secondary group">
+            <span class="flex items-center justify-center">
+              <i class="ri-folder-line mr-2"></i>
+              View My Work
+              <i class="ri-external-link-line ml-2 group-hover:scale-110 transition-transform"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</section>
+<!-- Services Preview Section -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">Services I Offer</h2>
+<p class="text-gray-700 max-w-2xl mx-auto">Comprehensive digital solutions tailored to meet your business needs and help you stay ahead in the digital landscape.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- WordPress Development -->
+<div class="service-card bg-white p-8 rounded-lg shadow-md transition-all duration-300" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+<div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-wordpress-fill ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary mb-4">WordPress Development</h3>
+<p class="text-gray-700 mb-6">Custom WordPress websites and themes designed for performance, security, and scalability. From blogs to e-commerce solutions.</p>
+<a href="services.html" class="text-primary font-medium hover:underline flex items-center">
+Learn More
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+<!-- Full Stack Development -->
+<div class="service-card bg-white p-8 rounded-lg shadow-md transition-all duration-300" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+<div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-code-s-slash-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary mb-4">Full Stack Development</h3>
+<p class="text-gray-700 mb-6">End-to-end web application development using modern technologies like React, Node.js, and Python to create seamless user experiences.</p>
+<a href="services.html" class="text-primary font-medium hover:underline flex items-center">
+Learn More
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+<!-- AI ChatBot Development -->
+<div class="service-card bg-white p-8 rounded-lg shadow-md transition-all duration-300" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+<div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-robot-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary mb-4">AI ChatBot Development</h3>
+<p class="text-gray-700 mb-6">Custom AI chatbots designed to enhance customer support, automate responses, and provide 24/7 intelligent assistance for your business needs.</p>
+<a href="services.html" class="text-primary font-medium hover:underline flex items-center">
+Learn More
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+<div class="text-center mt-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+<a href="services.html" class="inline-block bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Explore All Services</a>
+</div>
+</div>
+</section>
+<!-- Portfolio Preview Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+<div class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Portfolio Showcase</div>
+<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">Featured Projects</h2>
+<p class="text-gray-700 max-w-2xl mx-auto">Explore our innovative solutions that have transformed businesses across various industries.</p>
+</div>
+<div class="flex justify-center mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+<div class="inline-flex bg-white rounded-full p-1 shadow-sm">
+<button class="project-filter-btn active px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-filter="all">All Projects</button>
+<button class="project-filter-btn px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-filter="e-commerce">E-commerce</button>
+<button class="project-filter-btn px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-filter="education">Education</button>
+<button class="project-filter-btn px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-filter="real-estate">Real Estate</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-md transform hover:-translate-y-1 transition-all duration-300" data-category="e-commerce" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=modern%2520e-commerce%2520website%2520design%2C%2520clean%2520layout%2C%2520professional%2520product%2520display%2C%2520shopping%2520cart%2520interface%2C%2520responsive%2520design%2C%2520green%2520accents%2C%2520high-quality%2520UI%2FUX%2C%2520digital%2520storefront&width=600&height=400&seq=project1&orientation=landscape" alt="E-commerce Website" class="w-full h-48 object-cover object-top">
+<div class="absolute top-4 right-4 flex space-x-2">
+<span class="bg-white text-primary px-3 py-1 rounded-full text-xs font-medium shadow-sm">WordPress</span>
+<span class="bg-white text-primary px-3 py-1 rounded-full text-xs font-medium shadow-sm">WooCommerce</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-medium text-primary bg-primary bg-opacity-10 px-3 py-1 rounded-full">E-commerce</span>
+<div class="flex items-center space-x-2">
+<span class="text-gray-600 text-sm flex items-center"><i class="ri-eye-line mr-1"></i> 12.5K</span>
+<span class="text-gray-600 text-sm flex items-center"><i class="ri-heart-line mr-1"></i> 1.2K</span>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-secondary mb-2">GreenLeaf Organics</h3>
+<p class="text-gray-700 mb-4">Custom WordPress e-commerce solution with integrated payment gateways and inventory management system.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">Payment Integration</span>
+<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">Inventory System</span>
+<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">Analytics</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520woman%2520headshot%2C%2520confident%2520smile%2C%2520modern%2520office%2520background&width=100&height=100&seq=client1&orientation=squarish" alt="Client" class="w-8 h-8 rounded-full object-cover mr-2">
+<span class="text-sm text-gray-600">Sarah Williams</span>
+</div>
+<a href="portfolio.html" class="text-primary font-medium hover:underline flex items-center">
+View Details
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-md transform hover:-translate-y-1 transition-all duration-300" data-category="education" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=modern%2520educational%2520platform%2520interface%2C%2520online%2520learning%2520dashboard%2C%2520course%2520catalog%2C%2520video%2520player%2C%2520clean%2520design%2C%2520green%2520accents%2C%2520user-friendly%2520UI%2C%2520professional%2520educational%2520tech%2520platform&width=600&height=400&seq=project2&orientation=landscape" alt="Educational Platform" class="w-full h-48 object-cover object-top">
+<div class="absolute top-4 right-4 flex space-x-2">
+<span class="bg-white text-primary px-3 py-1 rounded-full text-xs font-medium shadow-sm">React</span>
+<span class="bg-white text-primary px-3 py-1 rounded-full text-xs font-medium shadow-sm">Node.js</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-medium text-primary bg-primary bg-opacity-10 px-3 py-1 rounded-full">Education</span>
+<div class="flex items-center space-x-2">
+<span class="text-gray-600 text-sm flex items-center"><i class="ri-eye-line mr-1"></i> 15.8K</span>
+<span class="text-gray-600 text-sm flex items-center"><i class="ri-heart-line mr-1"></i> 2.3K</span>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-secondary mb-2">EduConnect Platform</h3>
+<p class="text-gray-700 mb-4">Full-stack learning management system with video conferencing, course management, and student progress tracking.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">Video Conferencing</span>
+<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">Progress Tracking</span>
+<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">Real-time Chat</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520man%2520headshot%2C%2520confident%2520smile%2C%2520modern%2520office%2520background&width=100&height=100&seq=client2&orientation=squarish" alt="Client" class="w-8 h-8 rounded-full object-cover mr-2">
+<span class="text-sm text-gray-600">Michael Chen</span>
+</div>
+<a href="portfolio.html" class="text-primary font-medium hover:underline flex items-center">
+View Details
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-md transform hover:-translate-y-1 transition-all duration-300" data-category="real-estate" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=real%2520estate%2520property%2520listing%2520website%2C%2520property%2520search%2520interface%2C%2520map%2520integration%2C%2520modern%2520UI%2C%2520property%2520details%2520page%2C%2520green%2520accents%2C%2520professional%2520real%2520estate%2520platform%2C%2520clean%2520design&width=600&height=400&seq=project3&orientation=landscape" alt="Real Estate Platform" class="w-full h-48 object-cover object-top">
+<div class="absolute top-4 right-4 flex space-x-2">
+<span class="bg-white text-primary px-3 py-1 rounded-full text-xs font-medium shadow-sm">Python</span>
+<span class="bg-white text-primary px-3 py-1 rounded-full text-xs font-medium shadow-sm">TensorFlow</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-medium text-primary bg-primary bg-opacity-10 px-3 py-1 rounded-full">Real Estate</span>
+<div class="flex items-center space-x-2">
+<span class="text-gray-600 text-sm flex items-center"><i class="ri-eye-line mr-1"></i> 18.2K</span>
+<span class="text-gray-600 text-sm flex items-center"><i class="ri-heart-line mr-1"></i> 3.1K</span>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-secondary mb-2">PropertyFinder Pro</h3>
+<p class="text-gray-700 mb-4">AI-powered real estate platform with advanced search capabilities, virtual tours, and automated lead generation.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">AI Search</span>
+<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">Virtual Tours</span>
+<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">Lead Generation</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520woman%2520headshot%2C%2520confident%2520smile%2C%2520modern%2520office%2520background&width=100&height=100&seq=client3&orientation=squarish" alt="Client" class="w-8 h-8 rounded-full object-cover mr-2">
+<span class="text-sm text-gray-600">Amanda Rodriguez</span>
+</div>
+<a href="portfolio.html" class="text-primary font-medium hover:underline flex items-center">
+View Details
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+<a href="portfolio.html" class="inline-block bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Explore Full Portfolio</a>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">What Clients Say</h2>
+<p class="text-gray-700 max-w-2xl mx-auto">Hear from businesses that have transformed their digital presence with SolvaTree.</p>
+</div>
+<div class="testimonial-slider overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+<div class="testimonial-wrapper flex transition-transform duration-500">
+<!-- Testimonial 1 -->
+<div class="testimonial-slide min-w-full md:min-w-[33.333%] px-4">
+<div class="bg-white p-8 rounded-lg shadow-md h-full">
+<div class="flex items-center mb-6">
+<i class="ri-double-quotes-l ri-2x text-primary text-opacity-20"></i>
+</div>
+<p class="text-gray-700 mb-6">"Daniel transformed our outdated website into a modern, user-friendly platform that has significantly increased our online sales. His expertise in WordPress and e-commerce solutions is exceptional."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-3-line ri-lg text-gray-500"></i>
+</div>
+<div>
+<h4 class="font-semibold text-secondary">Sarah Johnson</h4>
+<p class="text-sm text-gray-600">CEO, GreenLeaf Organics</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="testimonial-slide min-w-full md:min-w-[33.333%] px-4">
+<div class="bg-white p-8 rounded-lg shadow-md h-full">
+<div class="flex items-center mb-6">
+<i class="ri-double-quotes-l ri-2x text-primary text-opacity-20"></i>
+</div>
+<p class="text-gray-700 mb-6">"Working with SolvaTree was a game-changer for our educational platform. Daniel's full-stack development skills and attention to detail resulted in a seamless learning experience for our students."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-3-line ri-lg text-gray-500"></i>
+</div>
+<div>
+<h4 class="font-semibold text-secondary">Michael Thompson</h4>
+<p class="text-sm text-gray-600">Director, EduConnect</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="testimonial-slide min-w-full md:min-w-[33.333%] px-4">
+<div class="bg-white p-8 rounded-lg shadow-md h-full">
+<div class="flex items-center mb-6">
+<i class="ri-double-quotes-l ri-2x text-primary text-opacity-20"></i>
+</div>
+<p class="text-gray-700 mb-6">"The AI integration Daniel implemented for our real estate platform has revolutionized how we match properties with potential buyers. His technical expertise and business understanding are unmatched."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-3-line ri-lg text-gray-500"></i>
+</div>
+<div>
+<h4 class="font-semibold text-secondary">Rebecca Martinez</h4>
+<p class="text-sm text-gray-600">CTO, PropertyFinder Pro</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 4 -->
+<div class="testimonial-slide min-w-full md:min-w-[33.333%] px-4">
+<div class="bg-white p-8 rounded-lg shadow-md h-full">
+<div class="flex items-center mb-6">
+<i class="ri-double-quotes-l ri-2x text-primary text-opacity-20"></i>
+</div>
+<p class="text-gray-700 mb-6">"SolvaTree's expertise in AI integration has completely transformed our customer service capabilities. The chatbot Daniel developed for us has significantly reduced response times and improved customer satisfaction."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-3-line ri-lg text-gray-500"></i>
+</div>
+<div>
+<h4 class="font-semibold text-secondary">David Wilson</h4>
+<p class="text-sm text-gray-600">Head of Digital, TechSolutions</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-8 testimonial-dots">
+<button class="w-3 h-3 rounded-full bg-gray-300 mx-1 testimonial-dot active" data-slide="0"></button>
+<button class="w-3 h-3 rounded-full bg-gray-300 mx-1 testimonial-dot" data-slide="1"></button>
+<button class="w-3 h-3 rounded-full bg-gray-300 mx-1 testimonial-dot" data-slide="2"></button>
+<button class="w-3 h-3 rounded-full bg-gray-300 mx-1 testimonial-dot" data-slide="3"></button>
+</div>
+</div>
+</div>
+</section>
+<!-- GitHub Repositories Section -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+<div class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Open Source</div>
+<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">GitHub Repositories</h2>
+<p class="text-gray-700 max-w-2xl mx-auto">Explore my open-source contributions and personal projects on GitHub.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="githubRepos" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+<!-- Loading State -->
+<div class="col-span-full flex justify-center py-8">
+<div class="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Freelance Platforms Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+<div class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Freelance Work</div>
+<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">Freelance Profiles</h2>
+<p class="text-gray-700 max-w-2xl mx-auto">Check out my professional services and reviews on top freelancing platforms.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Fiverr Profile -->
+<div class="bg-white rounded-lg shadow-md p-8" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center">
+<div class="w-12 h-12 flex items-center justify-center bg-[#1DBF73] bg-opacity-10 rounded-lg mr-4">
+<i class="ri-fire-fill text-[#1DBF73] text-2xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-secondary">Fiverr</h3>
+<p class="text-gray-600">Level 2 Seller</p>
+</div>
+</div>
+<a href="#" class="text-[#1DBF73] hover:underline flex items-center">
+View Profile
+<i class="ri-external-link-line ml-1"></i>
+</a>
+</div>
+<div class="space-y-4 mb-6">
+<div class="flex items-center justify-between">
+<span class="text-gray-600">Completed Projects</span>
+<span class="font-semibold text-secondary">150+</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-600">Average Rating</span>
+<div class="flex items-center">
+<span class="font-semibold text-secondary mr-2">4.9</span>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-600">Response Time</span>
+<span class="font-semibold text-secondary">2 hours</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">WordPress</span>
+<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">Web Development</span>
+<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">API Integration</span>
+</div>
+</div>
+<!-- Upwork Profile -->
+<div class="bg-white rounded-lg shadow-md p-8" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center">
+<div class="w-12 h-12 flex items-center justify-center bg-[#14A800] bg-opacity-10 rounded-lg mr-4">
+<i class="ri-upload-cloud-fill text-[#14A800] text-2xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-secondary">Upwork</h3>
+<p class="text-gray-600">Top Rated Plus</p>
+</div>
+</div>
+<a href="#" class="text-[#14A800] hover:underline flex items-center">
+View Profile
+<i class="ri-external-link-line ml-1"></i>
+</a>
+</div>
+<div class="space-y-4 mb-6">
+<div class="flex items-center justify-between">
+<span class="text-gray-600">Success Rate</span>
+<span class="font-semibold text-secondary">98%</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-600">Job Success Score</span>
+<div class="flex items-center">
+<span class="font-semibold text-secondary mr-2">100%</span>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-600">Total Earnings</span>
+<span class="font-semibold text-secondary">$50k+</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">Full Stack</span>
+<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">React</span>
+<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">Node.js</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="relative py-24 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10"></div>
+<div class="absolute right-0 top-0 w-1/2 h-full">
+<img src="https://readdy.ai/api/search-image?query=modern%2520abstract%2520geometric%2520pattern%2C%2520tech%2520themed%2C%2520subtle%2520grid%2520lines%2C%2520professional%2520design%2C%2520green%2520accents%2C%2520minimalist%2520style%2C%2520perfect%2520for%2520background%2C%2520low%2520contrast%2C%2520clean%2520look&width=800&height=600&seq=cta1&orientation=landscape" alt="Background Pattern" class="w-full h-full object-cover opacity-10">
+</div>
+<div class="container mx-auto px-4 relative">
+<div class="max-w-4xl mx-auto">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="text-left" data-aos="fade-right" data-aos-duration="1000">
+<div class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-6">Let's Collaborate</div>
+<h2 class="text-3xl md:text-4xl font-bold text-secondary mb-6">Ready to Build Something Extraordinary?</h2>
+<p class="text-gray-700 mb-8">Transform your ideas into reality with custom solutions tailored to your unique needs. Let's create innovative digital experiences that drive real results.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="contact.html" class="inline-flex items-center justify-center bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">
+<span>Start a Project</span>
+<i class="ri-arrow-right-line ml-2"></i>
+</a>
+<a href="portfolio.html" class="inline-flex items-center justify-center bg-white border border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap hover:bg-gray-50 transition-all">
+<span>View Portfolio</span>
+<i class="ri-eye-line ml-2"></i>
+</a>
+</div>
+</div>
+<div class="space-y-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+<div class="bg-white rounded-lg p-6 shadow-md">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center">
+<i class="ri-timer-flash-line text-primary text-2xl"></i>
+</div>
+<div>
+<h3 class="font-semibold text-secondary">Quick Response Time</h3>
+<p class="text-gray-600 text-sm">Average response within 2 hours</p>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg p-6 shadow-md">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center">
+<i class="ri-shield-check-line text-primary text-2xl"></i>
+</div>
+<div>
+<h3 class="font-semibold text-secondary">Project Guarantee</h3>
+<p class="text-gray-600 text-sm">100% satisfaction guaranteed</p>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg p-6 shadow-md">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center">
+<i class="ri-customer-service-2-line text-primary text-2xl"></i>
+</div>
+<div>
+<h3 class="font-semibold text-secondary">Dedicated Support</h3>
+<p class="text-gray-600 text-sm">Full support throughout the project</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Form Modal -->
+<div id="contactFormModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+<div class="bg-white rounded-lg shadow-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+<div class="p-6">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold text-secondary">Quick Contact</h3>
+<button id="closeContactModal" class="text-gray-500 hover:text-gray-700">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<form id="quickContactForm" class="space-y-4">
+<div>
+<label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+<input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary" required>
+</div>
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+<input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary" required>
+</div>
+<div>
+<label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+<textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary" required></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-white px-6 py-2 rounded-button hover:bg-opacity-90 transition-all">Send Message</button>
+</form>
+<div id="formSuccess" class="hidden mt-4 p-4 bg-green-100 text-green-800 rounded-md">
+Thank you for your message! We'll get back to you shortly.
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Contact Button -->
+<button id="floatingContactBtn" class="fixed bottom-20 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center z-40">
+<i class="ri-message-3-line ri-lg"></i>
+</button>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<!-- Company Info -->
+<div data-aos="fade-up" data-aos-duration="1000">
+<h3 class="text-xl font-['Pacifico'] text-white mb-6">SolvaTree</h3>
+<p class="text-gray-400 mb-6">Your complete solution point for web development, digital marketing, and AI integration services.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-twitter-x-line ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-linkedin-fill ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-github-fill ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-instagram-line ri-lg"></i>
+</a>
+</div>
+</div>
+<!-- Quick Links -->
+<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+<h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+<ul class="space-y-3">
+<li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+<li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+<li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+<li><a href="portfolio.html" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+<li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<!-- Services -->
+<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+<h3 class="text-lg font-semibold mb-6">Services</h3>
+<ul class="space-y-3">
+<li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">WordPress Development</a></li>
+<li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Full Stack Development</a></li>
+<li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">AI Integration</a></li>
+<li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+<li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">E-commerce Solutions</a></li>
+</ul>
+</div>
+<!-- Contact Info -->
+<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+<h3 class="text-lg font-semibold mb-6">Contact</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+<i class="ri-mail-line text-primary"></i>
+</div>
+<span class="text-gray-400">info@solvatree.com</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<span class="text-gray-400">+234 801 234 5678</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+<i class="ri-map-pin-line text-primary"></i>
+</div>
+<span class="text-gray-400">Lagos, Nigeria</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Newsletter -->
+<div class="border-t border-gray-800 pt-8 pb-4">
+<div class="max-w-xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+<h3 class="text-lg font-semibold mb-4 text-center">Subscribe to Our Newsletter</h3>
+<form id="newsletterForm" class="flex flex-col sm:flex-row gap-4">
+<input type="email" placeholder="Your email address" class="flex-1 bg-gray-800 text-white border-none !rounded-button px-4 py-2 focus:ring-2 focus:ring-primary" required>
+<button type="submit" class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Subscribe</button>
+</form>
+<div id="newsletterSuccess" class="hidden mt-4 p-2 bg-green-800 text-white text-center rounded-md">
+Thank you for subscribing! You'll receive updates soon.
+</div>
+</div>
+</div>
+<!-- Copyright -->
+<div class="border-t border-gray-800 mt-8 pt-8 text-center">
+<p class="text-gray-500">© 2025 SolvaTree. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<!-- Scroll to Top Button -->
+<button id="scrollToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300">
+<i class="ri-arrow-up-line ri-lg"></i>
+</button>
+
+<!-- Theme Toggle Button -->
+<button id="themeToggle" class="fixed top-24 right-6 w-10 h-10 bg-white dark:bg-gray-800 text-primary dark:text-white rounded-full shadow-lg flex items-center justify-center z-40 border border-gray-200 dark:border-gray-700">
+<i class="ri-sun-line dark:hidden"></i>
+<i class="ri-moon-line hidden dark:block"></i>
+</button>
+
+<!-- Theme Toggle Button -->
+<button id="themeToggle" class="fixed top-24 right-6 w-10 h-10 bg-white dark:bg-gray-800 text-primary dark:text-white rounded-full shadow-lg flex items-center justify-center z-40 border border-gray-200 dark:border-gray-700">
+<i class="ri-sun-line dark:hidden"></i>
+<i class="ri-moon-line hidden dark:block"></i>
+</button>
+
+<!-- Scroll to Top Button -->
+<button id="scrollToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center z-40 opacity-0 transition-all duration-300 hover:bg-opacity-90">
+<i class="ri-arrow-up-line text-xl"></i>
+</button>
+
+<!-- Floating Contact Button -->
+<button id="floatingContactBtn" class="fixed bottom-6 left-6 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center z-40 hover:bg-opacity-90 transition-all">
+<i class="ri-message-3-line text-xl"></i>
+</button>
+
+<!-- Contact Form Modal -->
+<div id="contactFormModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center opacity-0 invisible transition-all duration-300">
+<div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-2xl font-semibold text-gray-800">Quick Contact</h3>
+<button id="closeContactModal" class="text-gray-500 hover:text-gray-700">
+<i class="ri-close-line text-2xl"></i>
+</button>
+</div>
+<form id="quickContactForm">
+<div class="mb-4">
+<input type="text" placeholder="Your Name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary" required>
+</div>
+<div class="mb-4">
+<input type="email" placeholder="Your Email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary" required>
+</div>
+<div class="mb-4">
+<textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary" required></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-opacity-90 transition-all">Send Message</button>
+</form>
+<div id="formSuccess" class="hidden text-green-600 text-center mt-4">
+<i class="ri-check-line text-2xl mb-2"></i>
+<p>Message sent successfully!</p>
+</div>
+</div>
+</div>
+
+<!-- Preloader -->
+<div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white">
+<div class="relative w-24 h-24">
+<div class="absolute top-0 left-0 w-full h-full border-8 border-gray-200 rounded-full"></div>
+<div class="absolute top-0 left-0 w-full h-full border-8 border-primary border-t-transparent rounded-full animate-spin"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-['Pacifico'] text-primary">S</div>
+</div>
+</div>
+
+<!-- CRITICAL: Fixed JavaScript Section -->
+<script>
+console.log('🚀 SolvaTree website loading...');
+
+// CRITICAL: Preloader management - this MUST work to show content
+function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        console.log('✅ Hiding preloader');
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+        preloader.style.pointerEvents = 'none';
+        
+        // Ensure it's completely hidden
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 600);
+    }
+}
+
+// Hide preloader when page loads
+window.addEventListener('load', function() {
+    console.log('✅ Page loaded completely');
+    setTimeout(hidePreloader, 500);
+});
+
+// Fallback: Force hide preloader after 2 seconds maximum
+setTimeout(function() {
+    console.log('⚠️ Fallback: Force hiding preloader');
+    hidePreloader();
+}, 2000);
+
+// Basic functionality when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ DOM ready');
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+            if (mobileMenu.classList.contains('invisible')) {
+                mobileMenu.classList.remove('invisible', '-translate-y-full', 'opacity-0');
+                mobileMenu.classList.add('translate-y-0', 'opacity-100');
+                this.innerHTML = '<i class="ri-close-line ri-lg"></i>';
+            } else {
+                mobileMenu.classList.add('invisible', '-translate-y-full', 'opacity-0');
+                mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+                this.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+            }
+        });
+    }
+    
+    // Scroll to top button
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.opacity = '1';
+            } else {
+                scrollToTopBtn.style.opacity = '0';
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+    
+    // Initialize AOS animations if available
+    if (typeof AOS !== 'undefined') {
+        try {
+            AOS.init({
+                duration: 1000,
+                once: true,
+                mirror: false
+            });
+            console.log('✅ AOS initialized');
+        } catch (error) {
+            console.error('AOS error:', error);
+        }
+    }
+});
+
+console.log('✅ Core script loaded successfully');
+</script>
+
+<!-- Load AOS Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</body>
+</html>
