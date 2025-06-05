@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Eye Icon - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#0F9D58',secondary:'#333333'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <style>
+        .debug-panel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border: 2px solid #0F9D58;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+            font-family: monospace;
+            font-size: 12px;
+            max-width: 300px;
+        }
+        .debug-status { margin: 5px 0; }
+        .debug-success { color: #10B981; }
+        .debug-error { color: #EF4444; }
+        .debug-warning { color: #F59E0B; }
+    </style>
+</head>
+<body class="bg-white pt-20">
+    <!-- Debug Panel -->
+    <div class="debug-panel">
+        <h3 style="margin: 0 0 10px 0; color: #0F9D58;">🔍 Debug Status</h3>
+        <div id="debugInfo">Loading...</div>
+        <button onclick="testModal()" style="margin-top: 10px; padding: 5px 10px; background: #0F9D58; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            Test Modal
+        </button>
+    </div>
+
+    <!-- Simple Portfolio Grid -->
+    <div class="container mx-auto px-4 py-20">
+        <h1 class="text-3xl font-bold text-center mb-12">Portfolio Debug Test</h1>
+        
+        <div id="portfolioGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Portfolio items will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="portfolioModal" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 id="modalTitle" class="text-2xl font-bold text-secondary">Modal Title</h2>
+                    <button id="closeModal" class="text-gray-400 hover:text-gray-600 text-xl">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+                <div id="modalContent">
+                    Modal content will appear here
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/portfolio.js"></script>
+    
+    <script>
+        let debugInfo = [];
+        
+        function updateDebug() {
+            const debugElement = document.getElementById('debugInfo');
+            debugInfo = [];
+            
+            // Check portfolioManager
+            if (window.portfolioManager) {
+                debugInfo.push('<div class="debug-status debug-success">✅ portfolioManager: Available</div>');
+                debugInfo.push(`<div class="debug-status debug-success">✅ Projects: ${window.portfolioManager.projects?.length || 0}</div>`);
+                debugInfo.push(`<div class="debug-status debug-success">✅ openModal: ${typeof window.portfolioManager.openModal}</div>`);
+            } else {
+                debugInfo.push('<div class="debug-status debug-error">❌ portfolioManager: Not Found</div>');
+            }
+            
+            // Check modal elements
+            const modal = document.getElementById('portfolioModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            
+            debugInfo.push(`<div class="debug-status ${modal ? 'debug-success' : 'debug-error'}">${modal ? '✅' : '❌'} Modal Element: ${modal ? 'Found' : 'Missing'}</div>`);
+            debugInfo.push(`<div class="debug-status ${modalTitle ? 'debug-success' : 'debug-error'}">${modalTitle ? '✅' : '❌'} Modal Title: ${modalTitle ? 'Found' : 'Missing'}</div>`);
+            debugInfo.push(`<div class="debug-status ${modalContent ? 'debug-success' : 'debug-error'}">${modalContent ? '✅' : '❌'} Modal Content: ${modalContent ? 'Found' : 'Missing'}</div>`);
+            
+            // Check portfolio grid
+            const grid = document.getElementById('portfolioGrid');
+            const cards = grid ? grid.querySelectorAll('.portfolio-item').length : 0;
+            debugInfo.push(`<div class="debug-status ${cards > 0 ? 'debug-success' : 'debug-warning'}">${cards > 0 ? '✅' : '⚠️'} Portfolio Cards: ${cards}</div>`);
+            
+            debugElement.innerHTML = debugInfo.join('');
+        }
+        
+        function testModal() {
+            console.log('🧪 Testing modal functionality...');
+            
+            if (window.portfolioManager && typeof window.portfolioManager.openModal === 'function') {
+                console.log('📞 Calling portfolioManager.openModal(1)');
+                try {
+                    window.portfolioManager.openModal(1);
+                    console.log('✅ Modal function called successfully');
+                } catch (error) {
+                    console.error('❌ Error calling modal:', error);
+                }
+            } else {
+                console.error('❌ portfolioManager.openModal not available');
+                
+                // Manual modal test
+                const modal = document.getElementById('portfolioModal');
+                if (modal) {
+                    console.log('🔧 Manually opening modal...');
+                    document.getElementById('modalTitle').textContent = 'Debug Test Modal';
+                    document.getElementById('modalContent').innerHTML = '<p>This is a manual test of the modal functionality.</p>';
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                }
+            }
+        }
+        
+        // Monitor clicks on eye icons
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.portfolio-action-btn')) {
+                const btn = e.target.closest('.portfolio-action-btn');
+                console.log('👁️ Eye icon clicked!', btn);
+                console.log('📋 onClick attribute:', btn.getAttribute('onclick'));
+                console.log('🎯 Event target:', e.target);
+            }
+        });
+        
+        // Update debug info periodically
+        setInterval(updateDebug, 1000);
+        
+        // Initial update
+        setTimeout(updateDebug, 500);
+        
+        // Log when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('📄 DOM Content Loaded');
+            setTimeout(updateDebug, 100);
+        });
+        
+        // Log when everything is loaded
+        window.addEventListener('load', () => {
+            console.log('🌐 Window Load Complete');
+            setTimeout(updateDebug, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Modal Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Final Modal Test</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-xl font-semibold mb-4">Test Status</h2>
+            <div id="testResults" class="space-y-2">
+                <p>Loading tests...</p>
+            </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-xl font-semibold mb-4">Test Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="border p-4 rounded-lg">
+                    <h3 class="font-semibold">Test Project 1</h3>
+                    <p class="text-gray-600 mb-3">Sample project description</p>
+                    <button class="portfolio-action-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" 
+                            onclick="testModalFunction(1)" title="View Details">
+                        <i class="ri-eye-line"></i> View Details
+                    </button>
+                </div>
+                
+                <div class="border p-4 rounded-lg">
+                    <h3 class="font-semibold">Test Project 2</h3>
+                    <p class="text-gray-600 mb-3">Another sample project</p>
+                    <button class="portfolio-action-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" 
+                            onclick="testModalFunction(2)" title="View Details">
+                        <i class="ri-eye-line"></i> View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Manual Test</h2>
+            <button onclick="manualModalTest()" class="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600">
+                Open Modal Manually
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="portfolioModal" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 id="modalTitle" class="text-2xl font-bold">Modal Title</h2>
+                    <button onclick="closeModalTest()" class="text-gray-500 hover:text-gray-700">
+                        <i class="ri-close-line text-2xl"></i>
+                    </button>
+                </div>
+                <div id="modalContent" class="prose max-w-none">
+                    Modal content will appear here...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/portfolio.js"></script>
+    <script>
+        function updateTestResults() {
+            const results = document.getElementById('testResults');
+            const tests = [];
+            
+            // Test 1: Check if portfolioManager exists
+            if (typeof window.portfolioManager !== 'undefined') {
+                tests.push('<p class="text-green-600">✅ portfolioManager is available globally</p>');
+            } else {
+                tests.push('<p class="text-red-600">❌ portfolioManager is NOT available globally</p>');
+            }
+            
+            // Test 2: Check if openModal method exists
+            if (window.portfolioManager && typeof window.portfolioManager.openModal === 'function') {
+                tests.push('<p class="text-green-600">✅ openModal method is available</p>');
+            } else {
+                tests.push('<p class="text-red-600">❌ openModal method is NOT available</p>');
+            }
+            
+            // Test 3: Check if modal element exists
+            const modal = document.getElementById('portfolioModal');
+            if (modal) {
+                tests.push('<p class="text-green-600">✅ Modal element found in DOM</p>');
+            } else {
+                tests.push('<p class="text-red-600">❌ Modal element NOT found in DOM</p>');
+            }
+            
+            // Test 4: Check if projects are loaded
+            if (window.portfolioManager && window.portfolioManager.projects && window.portfolioManager.projects.length > 0) {
+                tests.push(`<p class="text-green-600">✅ Projects loaded (${window.portfolioManager.projects.length} projects)</p>`);
+            } else {
+                tests.push('<p class="text-red-600">❌ No projects loaded</p>');
+            }
+            
+            results.innerHTML = tests.join('');
+        }
+        
+        function testModalFunction(projectId) {
+            console.log('🧪 Testing modal function with project ID:', projectId);
+            
+            if (window.portfolioManager && typeof window.portfolioManager.openModal === 'function') {
+                try {
+                    window.portfolioManager.openModal(projectId);
+                    console.log('✅ Modal function called successfully');
+                } catch (error) {
+                    console.error('❌ Error calling modal function:', error);
+                }
+            } else {
+                console.error('❌ portfolioManager.openModal not available');
+                alert('portfolioManager.openModal not available - check console for details');
+            }
+        }
+        
+        function manualModalTest() {
+            const modal = document.getElementById('portfolioModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            
+            if (modal && modalTitle && modalContent) {
+                modalTitle.textContent = 'Manual Test Modal';
+                modalContent.innerHTML = '<p>This modal was opened manually to test the basic functionality.</p><p>If you can see this, the modal structure is working correctly.</p>';
+                
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                
+                console.log('✅ Manual modal test successful');
+            } else {
+                console.error('❌ Modal elements not found');
+                alert('Modal elements not found - check console');
+            }
+        }
+        
+        function closeModalTest() {
+            const modal = document.getElementById('portfolioModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(updateTestResults, 1000); // Wait a second for portfolio manager to load
+            setInterval(updateTestResults, 2000); // Update every 2 seconds
+        });
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModalTest();
+            }
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('portfolioModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModalTest();
+            }
+        });
+    </script>
+</body>
+</html>

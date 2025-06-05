@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio-Admin Sync Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-center">Portfolio-Admin Sync Status</h1>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Admin Data -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4 text-blue-600">Admin CMS Data</h2>
+                <div id="adminData" class="space-y-2"></div>
+                <button onclick="loadAdminData()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Refresh Admin Data
+                </button>
+            </div>
+            
+            <!-- Portfolio Data -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4 text-green-600">Portfolio Display Data</h2>
+                <div id="portfolioData" class="space-y-2"></div>
+                <button onclick="loadPortfolioData()" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                    Refresh Portfolio Data
+                </button>
+            </div>
+        </div>
+        
+        <!-- Sync Status -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Sync Status</h2>
+            <div id="syncStatus" class="space-y-2"></div>
+            <button onclick="testSync()" class="mt-4 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
+                Test Sync
+            </button>
+        </div>
+        
+        <!-- Test Actions -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Test Actions</h2>
+            <div class="space-x-4">
+                <button onclick="clearAllData()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Clear All Data
+                </button>
+                <button onclick="addTestProject()" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+                    Add Test Project
+                </button>
+                <button onclick="openAdmin()" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">
+                    Open Admin
+                </button>
+                <button onclick="openPortfolio()" class="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600">
+                    Open Portfolio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadAdminData() {
+            const adminProjects = JSON.parse(localStorage.getItem('portfolioProjects') || '[]');
+            const syncData = JSON.parse(localStorage.getItem('portfolioSync') || '{}');
+            
+            const adminDiv = document.getElementById('adminData');
+            adminDiv.innerHTML = `
+                <div><strong>Total Projects:</strong> ${adminProjects.length}</div>
+                <div><strong>Active Projects:</strong> ${adminProjects.filter(p => p.active).length}</div>
+                <div><strong>Last Sync:</strong> ${syncData.lastUpdated || 'Never'}</div>
+                <div class="mt-2"><strong>Project Titles:</strong></div>
+                <ul class="list-disc list-inside text-sm">
+                    ${adminProjects.map(p => `<li>${p.title} (${p.active ? 'Active' : 'Inactive'})</li>`).join('')}
+                </ul>
+            `;
+        }
+        
+        function loadPortfolioData() {
+            // Simulate what portfolio.js does
+            const adminProjects = JSON.parse(localStorage.getItem('portfolioProjects') || '[]');
+            const activeProjects = adminProjects.filter(project => project.active);
+            
+            const portfolioDiv = document.getElementById('portfolioData');
+            portfolioDiv.innerHTML = `
+                <div><strong>Displayed Projects:</strong> ${activeProjects.length}</div>
+                <div><strong>Data Source:</strong> ${activeProjects.length > 0 ? 'Admin CMS' : 'Sample Data'}</div>
+                <div class="mt-2"><strong>Displayed Titles:</strong></div>
+                <ul class="list-disc list-inside text-sm">
+                    ${activeProjects.length > 0 
+                        ? activeProjects.map(p => `<li>${p.title}</li>`).join('')
+                        : '<li class="text-gray-500">Would use sample data</li>'
+                    }
+                </ul>
+            `;
+        }
+        
+        function testSync() {
+            const adminProjects = JSON.parse(localStorage.getItem('portfolioProjects') || '[]');
+            const syncData = JSON.parse(localStorage.getItem('portfolioSync') || '{}');
+            
+            const activeProjects = adminProjects.filter(p => p.active);
+            const syncProjects = syncData.projects || [];
+            
+            const isInSync = JSON.stringify(activeProjects) === JSON.stringify(syncProjects);
+            
+            const statusDiv = document.getElementById('syncStatus');
+            statusDiv.innerHTML = `
+                <div class="${isInSync ? 'text-green-600' : 'text-red-600'}">
+                    <strong>Sync Status:</strong> ${isInSync ? '✅ In Sync' : '❌ Out of Sync'}
+                </div>
+                <div><strong>Admin Active Projects:</strong> ${activeProjects.length}</div>
+                <div><strong>Sync Projects:</strong> ${syncProjects.length}</div>
+                <div><strong>Portfolio Data Available:</strong> ${localStorage.getItem('portfolioProjects') ? 'Yes' : 'No'}</div>
+                <div><strong>Sync Data Available:</strong> ${localStorage.getItem('portfolioSync') ? 'Yes' : 'No'}</div>
+            `;
+        }
+        
+        function clearAllData() {
+            localStorage.removeItem('portfolioProjects');
+            localStorage.removeItem('portfolioSync');
+            localStorage.removeItem('portfolioReviews');
+            localStorage.removeItem('portfolioSettings');
+            alert('All data cleared. Refresh pages to see changes.');
+            loadAdminData();
+            loadPortfolioData();
+            testSync();
+        }
+        
+        function addTestProject() {
+            const projects = JSON.parse(localStorage.getItem('portfolioProjects') || '[]');
+            const newProject = {
+                id: Date.now(),
+                title: `Test Project ${Date.now()}`,
+                category: 'fullstack',
+                description: 'This is a test project added for sync verification',
+                client: 'Test Client',
+                duration: '2 weeks',
+                technologies: ['React', 'Node.js'],
+                featured: false,
+                active: true,
+                createdAt: new Date().toISOString(),
+                image: 'https://via.placeholder.com/500x300',
+                status: 'completed'
+            };
+            
+            projects.push(newProject);
+            localStorage.setItem('portfolioProjects', JSON.stringify(projects));
+            
+            // Trigger sync
+            const portfolioData = {
+                projects: projects.filter(p => p.active),
+                lastUpdated: new Date().toISOString()
+            };
+            localStorage.setItem('portfolioSync', JSON.stringify(portfolioData));
+            
+            alert('Test project added and synced!');
+            loadAdminData();
+            loadPortfolioData();
+            testSync();
+        }
+        
+        function openAdmin() {
+            window.open('portfolio-admin.html', '_blank');
+        }
+        
+        function openPortfolio() {
+            window.open('portfolio.html', '_blank');
+        }
+        
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAdminData();
+            loadPortfolioData();
+            testSync();
+        });
+    </script>
+</body>
+</html>

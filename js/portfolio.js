@@ -10,12 +10,11 @@ class PortfolioManager {
         this.currentView = 'grid';
         this.currentSort = 'date';
         this.searchQuery = '';
-        
-        this.init();
+          this.init();
     }    init() {
         this.loadProjects();
         this.setupEventListeners();
-        this.setupModal();        this.setupAnimations();
+        this.setupAnimations();
         this.setupAdminDataSync();
         this.setupMobileMenu();
     }
@@ -85,7 +84,8 @@ class PortfolioManager {
                     this.filteredProjects = [...this.projects];
                 }
             } catch (e) {
-                console.warn('Failed to load synced data, using sample data');
+                console.warn('Failed to load synced data, using sample data:', e.message);
+                // Fallback to sample data will be handled by getSampleProjectsData()
             }
         }
     }
@@ -325,9 +325,7 @@ class PortfolioManager {
                 technologies: ["Next.js", "Node.js", "PostgreSQL", "Socket.io", "WebRTC", "Docker"]
             }
         ];
-    }
-
-    loadProjects() {
+    }    loadProjects() {
         this.showLoading();
         
         // Simulate API call
@@ -338,7 +336,9 @@ class PortfolioManager {
             this.updateProjectCount();
             this.hideLoading();
         }, 500);
-    }    setupEventListeners() {
+    }
+
+    setupEventListeners() {
         // Filter buttons
         const filterBtns = document.querySelectorAll('.filter-btn');
         filterBtns.forEach(btn => {
@@ -413,7 +413,9 @@ class PortfolioManager {
             btn.classList.remove('active');
         });
         activeBtn.classList.add('active');
-    }    filterProjects(category) {
+    }
+
+    filterProjects(category) {
         this.currentFilter = category;
         
         if (category === 'all') {
@@ -565,7 +567,9 @@ class PortfolioManager {
             }
             filterInfo.textContent = info;
         }
-    }    // Update portfolio statistics on main page (now removed/unused)
+    }
+
+    // Update portfolio statistics on main page (now removed/unused)
     updatePortfolioStats() {
         // This function is kept for backward compatibility but no longer used
         // Counter section has been removed
@@ -590,7 +594,9 @@ class PortfolioManager {
 
         // Observe portfolio cards as they're added
         this.portfolioObserver = observer;
-    }    renderProjects() {
+    }
+
+    renderProjects() {
         const portfolioGrid = document.getElementById('portfolioGrid');
         const noResults = document.getElementById('noResults');
         
@@ -627,12 +633,8 @@ class PortfolioManager {
             <div class="portfolio-item portfolio-card" data-aos="fade-up" data-aos-delay="${this.filteredProjects.indexOf(project) * 100}">
                 ${project.featured ? '<div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-xs font-medium z-10">Featured</div>' : ''}
                 <div class="portfolio-card-image">
-                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
-                    <div class="portfolio-card-overlay">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">                    <div class="portfolio-card-overlay">
                         <div class="portfolio-card-actions">
-                            <button class="portfolio-action-btn" onclick="portfolioManager.openModal(${project.id})" title="View Details">
-                                <i class="ri-eye-line"></i>
-                            </button>
                             ${project.liveUrl ? `
                                 <a href="${project.liveUrl}" target="_blank" class="portfolio-action-btn" title="Live Demo">
                                     <i class="ri-external-link-line"></i>
@@ -686,11 +688,7 @@ class PortfolioManager {
                             <div class="text-sm text-gray-500">
                                 <div>${project.client}</div>
                                 <div>${this.formatDate(project.date)} • ${project.duration}</div>
-                            </div>
-                            <div class="flex space-x-2">
-                                <button class="portfolio-action-btn" onclick="portfolioManager.openModal(${project.id})" title="View Details">
-                                    <i class="ri-eye-line"></i>
-                                </button>
+                            </div>                            <div class="flex space-x-2">
                                 ${project.liveUrl ? `
                                     <a href="${project.liveUrl}" target="_blank" class="portfolio-action-btn" title="Live Demo">
                                         <i class="ri-external-link-line"></i>
@@ -742,168 +740,9 @@ class PortfolioManager {
             if (this.portfolioObserver) {
                 this.portfolioObserver.observe(card);
             }
-        });
-    }
+        });    }
 
-    setupModal() {
-        const modal = document.getElementById('portfolioModal');
-        const closeBtn = document.getElementById('closeModal');
-        
-        closeBtn.addEventListener('click', () => this.closeModal());
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                this.closeModal();
-            }
-        });
-
-        // Escape key to close modal
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-                this.closeModal();
-            }
-        });
-    }
-
-    openModal(projectId) {
-        const project = this.projects.find(p => p.id === projectId);
-        if (!project) return;
-
-        const modal = document.getElementById('portfolioModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalContent = document.getElementById('modalContent');
-
-        modalTitle.textContent = project.title;
-        modalContent.innerHTML = this.generateModalContent(project);
-
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-
-        // Setup image carousel if multiple images
-        if (project.images && project.images.length > 1) {
-            this.setupImageCarousel(project.images);
-        }
-    }
-
-    closeModal() {
-        const modal = document.getElementById('portfolioModal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-    }
-
-    generateModalContent(project) {
-        return `
-            <div class="modal-content-enter">
-                <div class="modal-image-carousel">
-                    ${project.images && project.images.length > 0 ? `
-                        <img src="${project.images[0]}" alt="${project.title}" class="modal-image" id="modalImage">
-                        ${project.images.length > 1 ? `
-                            <button class="modal-nav-btn modal-nav-prev" onclick="portfolioManager.prevImage()">
-                                <i class="ri-arrow-left-line"></i>
-                            </button>
-                            <button class="modal-nav-btn modal-nav-next" onclick="portfolioManager.nextImage()">
-                                <i class="ri-arrow-right-line"></i>
-                            </button>
-                            <div class="modal-indicators">
-                                ${project.images.map((_, index) => `
-                                    <div class="modal-indicator ${index === 0 ? 'active' : ''}" onclick="portfolioManager.setImage(${index})"></div>
-                                `).join('')}
-                            </div>
-                        ` : ''}
-                    ` : `
-                        <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                            <i class="ri-image-line text-4xl text-gray-400"></i>
-                        </div>
-                    `}
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="text-lg font-semibold mb-3">Project Overview</h3>
-                        <p class="text-gray-600 mb-4">${project.description}</p>
-                        
-                        <div class="space-y-2 mb-4">
-                            <div class="flex justify-between">
-                                <span class="font-medium">Client:</span>
-                                <span class="text-gray-600">${project.client}</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="font-medium">Duration:</span>
-                                <span class="text-gray-600">${project.duration}</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="font-medium">Completed:</span>
-                                <span class="text-gray-600">${this.formatDate(project.date)}</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-lg font-semibold mb-3">Technologies Used</h3>
-                        <div class="modal-tech-stack">
-                            ${project.technologies.map(tech => `
-                                <span class="modal-tech-tag">${tech}</span>
-                            `).join('')}
-                        </div>
-                        
-                        <div class="modal-links">
-                            ${project.liveUrl ? `
-                                <a href="${project.liveUrl}" target="_blank" class="modal-link">
-                                    <i class="ri-external-link-line"></i>
-                                    <span>Live Demo</span>
-                                </a>
-                            ` : ''}
-                            ${project.githubUrl ? `
-                                <a href="${project.githubUrl}" target="_blank" class="modal-link">
-                                    <i class="ri-github-line"></i>
-                                    <span>Source Code</span>
-                                </a>
-                            ` : ''}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    setupImageCarousel(images) {
-        this.currentImageIndex = 0;
-        this.carouselImages = images;
-    }
-
-    nextImage() {
-        if (!this.carouselImages) return;
-        this.currentImageIndex = (this.currentImageIndex + 1) % this.carouselImages.length;
-        this.updateCarouselImage();
-    }
-
-    prevImage() {
-        if (!this.carouselImages) return;
-        this.currentImageIndex = this.currentImageIndex === 0 
-            ? this.carouselImages.length - 1 
-            : this.currentImageIndex - 1;
-        this.updateCarouselImage();
-    }
-
-    setImage(index) {
-        if (!this.carouselImages) return;
-        this.currentImageIndex = index;
-        this.updateCarouselImage();
-    }
-
-    updateCarouselImage() {
-        const modalImage = document.getElementById('modalImage');
-        const indicators = document.querySelectorAll('.modal-indicator');
-        
-        if (modalImage) {
-            modalImage.src = this.carouselImages[this.currentImageIndex];
-        }
-        
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === this.currentImageIndex);
-        });
-    }    updateProjectCount() {
+    updateProjectCount() {
         const totalProjects = document.getElementById('totalProjects');
         const totalProjectsCount = document.getElementById('totalProjectsCount');
         
@@ -960,9 +799,8 @@ let portfolioManager;
 
 document.addEventListener('DOMContentLoaded', () => {
     portfolioManager = new PortfolioManager();
+    // Export for global access after initialization
+    window.portfolioManager = portfolioManager;
 });
-
-// Export for global access
-window.portfolioManager = portfolioManager;
 
 //# sourceMappingURL=portfolio.js.map

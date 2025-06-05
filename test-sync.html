@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio-Admin Sync Test</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Portfolio-Admin Sync Status Test</h1>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Admin Data -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-blue-600">Admin CMS Data</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-semibold">Projects in Admin:</h3>
+                        <div id="adminProjects" class="text-sm text-gray-600"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Active Projects:</h3>
+                        <div id="adminActiveProjects" class="text-sm text-gray-600"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Data -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-green-600">Portfolio Display Data</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-semibold">Synced Data Available:</h3>
+                        <div id="syncedData" class="text-sm text-gray-600"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Projects for Portfolio:</h3>
+                        <div id="portfolioProjects" class="text-sm text-gray-600"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sync Status -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mt-8">
+            <h2 class="text-xl font-bold mb-4">Sync Status</h2>
+            <div id="syncStatus" class="text-lg"></div>
+            <div class="mt-4">
+                <button onclick="testSync()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Test Sync
+                </button>
+                <button onclick="clearData()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">
+                    Clear All Data
+                </button>
+            </div>
+        </div>
+
+        <!-- Project Details -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mt-8">
+            <h2 class="text-xl font-bold mb-4">Project Details Comparison</h2>
+            <div id="projectDetails" class="space-y-4"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkSyncStatus() {
+            // Get admin data
+            const adminProjects = JSON.parse(localStorage.getItem('portfolioProjects') || '[]');
+            const syncedData = JSON.parse(localStorage.getItem('portfolioSync') || '{}');
+            
+            // Display admin data
+            document.getElementById('adminProjects').textContent = `${adminProjects.length} projects total`;
+            const activeAdminProjects = adminProjects.filter(p => p.active);
+            document.getElementById('adminActiveProjects').textContent = `${activeAdminProjects.length} active projects`;
+            
+            // Display synced data
+            const hasSyncedData = syncedData.projects && syncedData.projects.length > 0;
+            document.getElementById('syncedData').textContent = hasSyncedData ? 
+                `Yes - ${syncedData.projects.length} projects synced` : 'No synced data found';
+            
+            // Display portfolio data (what portfolio.js would load)
+            let portfolioProjectsCount = 0;
+            if (adminProjects.length > 0) {
+                portfolioProjectsCount = adminProjects.filter(p => p.active).length;
+                document.getElementById('portfolioProjects').textContent = 
+                    `${portfolioProjectsCount} projects (from admin data)`;
+            } else {
+                document.getElementById('portfolioProjects').textContent = 
+                    'Would use sample data (no admin data)';
+            }
+            
+            // Sync status
+            const syncStatusEl = document.getElementById('syncStatus');
+            let status = '';
+            let statusClass = '';
+            
+            if (adminProjects.length === 0) {
+                status = '⚠️ No admin data found - Portfolio will use sample data';
+                statusClass = 'text-yellow-600';
+            } else if (!hasSyncedData) {
+                status = '❌ Admin data exists but sync data missing';
+                statusClass = 'text-red-600';
+            } else if (syncedData.projects.length === activeAdminProjects.length) {
+                status = '✅ Perfect sync - Portfolio and admin data match';
+                statusClass = 'text-green-600';
+            } else {
+                status = '⚠️ Sync mismatch - Data counts don\'t match';
+                statusClass = 'text-yellow-600';
+            }
+            
+            syncStatusEl.textContent = status;
+            syncStatusEl.className = `text-lg ${statusClass}`;
+            
+            // Show project details
+            showProjectDetails(adminProjects, syncedData.projects || []);
+        }
+        
+        function showProjectDetails(adminProjects, syncedProjects) {
+            const detailsEl = document.getElementById('projectDetails');
+            let html = '';
+            
+            if (adminProjects.length === 0 && syncedProjects.length === 0) {
+                html = '<p class="text-gray-500">No projects found in either admin or sync data.</p>';
+            } else {
+                html += '<div class="grid md:grid-cols-2 gap-4">';
+                
+                // Admin projects
+                html += '<div><h3 class="font-semibold mb-2">Admin Projects:</h3><ul class="space-y-1">';
+                adminProjects.forEach(project => {
+                    const statusIcon = project.active ? '✅' : '❌';
+                    html += `<li class="text-sm">${statusIcon} ${project.title} (${project.category})</li>`;
+                });
+                html += '</ul></div>';
+                
+                // Synced projects
+                html += '<div><h3 class="font-semibold mb-2">Synced Projects:</h3><ul class="space-y-1">';
+                syncedProjects.forEach(project => {
+                    html += `<li class="text-sm">✅ ${project.title} (${project.category})</li>`;
+                });
+                html += '</ul></div>';
+                
+                html += '</div>';
+            }
+            
+            detailsEl.innerHTML = html;
+        }
+        
+        function testSync() {
+            // Simulate what admin would do when syncing
+            const adminProjects = JSON.parse(localStorage.getItem('portfolioProjects') || '[]');
+            const activeProjects = adminProjects.filter(p => p.active);
+            
+            const syncData = {
+                projects: activeProjects,
+                lastUpdated: new Date().toISOString()
+            };
+            
+            localStorage.setItem('portfolioSync', JSON.stringify(syncData));
+            
+            // Dispatch the event that portfolio.js listens for
+            window.dispatchEvent(new CustomEvent('portfolioDataUpdated', { 
+                detail: syncData 
+            }));
+            
+            alert('Sync test completed! Check the status above.');
+            checkSyncStatus();
+        }
+        
+        function clearData() {
+            if (confirm('This will clear all portfolio data. Are you sure?')) {
+                localStorage.removeItem('portfolioProjects');
+                localStorage.removeItem('portfolioSync');
+                localStorage.removeItem('portfolioReviews');
+                localStorage.removeItem('portfolioSettings');
+                alert('All data cleared!');
+                checkSyncStatus();
+            }
+        }
+        
+        // Initial check
+        checkSyncStatus();
+        
+        // Check every 5 seconds for changes
+        setInterval(checkSyncStatus, 5000);
+    </script>
+</body>
+</html>

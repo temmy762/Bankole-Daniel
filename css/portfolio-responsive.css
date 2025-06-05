@@ -92,6 +92,59 @@
     }
 }
 
+/* Extra small devices - phones in portrait mode */
+@media (max-width: 480px) {
+    .portfolio-filters {
+        gap: 0.375rem;
+        padding: 0 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.7rem;
+        min-height: 32px;
+        border-radius: 0.375rem;
+    }
+    
+    .filter-btn i {
+        font-size: 0.75rem;
+        margin-right: 0.125rem;
+    }
+    
+    /* Make sure buttons wrap nicely on very small screens */
+    .portfolio-filters .filter-btn {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: calc(50% - 0.2rem);
+    }
+}
+
+/* Small tablets and large phones in landscape */
+@media (min-width: 481px) and (max-width: 640px) {
+    .filter-btn {
+        padding: 0.5rem 0.625rem;
+        font-size: 0.8rem;
+        min-height: 38px;
+    }
+    
+    .filter-btn i {
+        font-size: 0.875rem;
+    }
+}
+
+/* Large tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .filter-btn {
+        min-width: 95px;
+        max-width: 130px;
+        padding: 0.625rem 0.75rem;
+    }
+    
+    .portfolio-filters {
+        gap: 0.5rem;
+    }
+}
+
 /* Fixed Filter Section Styles */
 /* Filter section styles */
 section.py-8 {
@@ -450,10 +503,11 @@ body {
 /* Search Bar Responsive */
 #portfolioSearch {
     width: 100%;
-    padding: 0.75rem 1rem 0.75rem 3rem;
+    padding: 0.625rem 0.75rem 0.625rem 2.5rem;
     border: 1px solid #d1d5db;
     border-radius: 0.5rem;
     transition: all 0.3s ease;
+    font-size: 0.875rem;
 }
 
 #portfolioSearch:focus {
@@ -464,8 +518,8 @@ body {
 
 @media (max-width: 640px) {
     #portfolioSearch {
-        padding: 0.75rem 1rem 0.75rem 2.5rem;
-        font-size: 0.875rem;
+        padding: 0.625rem 0.75rem 0.625rem 2.25rem;
+        font-size: 0.8rem;
     }
 }
 

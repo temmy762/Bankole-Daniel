@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Admin Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-2xl font-bold mb-6">Admin Login Debug</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow mb-6">
+            <h2 class="text-lg font-semibold mb-4">Test Login Functionality</h2>
+            
+            <form id="testLoginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Username</label>
+                    <input type="text" id="testUsername" value="admin" class="w-full px-3 py-2 border rounded" placeholder="admin">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Password</label>
+                    <input type="password" id="testPassword" value="password123" class="w-full px-3 py-2 border rounded" placeholder="password123">
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Test Login
+                </button>
+            </form>
+            
+            <div id="loginResult" class="mt-4 p-3 rounded hidden"></div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow mb-6">
+            <h2 class="text-lg font-semibold mb-4">JavaScript Error Check</h2>
+            <div id="errorLog" class="text-sm"></div>
+            <button onclick="checkPortfolioAdmin()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mt-2">
+                Check Portfolio Admin Object
+            </button>
+            <button onclick="checkDOM()" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 mt-2 ml-2">
+                Check DOM Elements
+            </button>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-lg font-semibold mb-4">Quick Actions</h2>
+            <button onclick="openAdminPage()" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">
+                Open Admin Page
+            </button>
+            <button onclick="clearAdminData()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">
+                Clear Admin Session
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Capture console errors
+        const originalError = console.error;
+        const errors = [];
+        console.error = function(...args) {
+            errors.push(args.join(' '));
+            originalError.apply(console, args);
+            updateErrorLog();
+        };
+
+        function updateErrorLog() {
+            const errorLog = document.getElementById('errorLog');
+            if (errors.length > 0) {
+                errorLog.innerHTML = '<strong>JavaScript Errors:</strong><br>' + 
+                    errors.map(err => `<span class="text-red-600">• ${err}</span>`).join('<br>');
+            } else {
+                errorLog.innerHTML = '<span class="text-green-600">✅ No JavaScript errors detected</span>';
+            }
+        }
+
+        function checkPortfolioAdmin() {
+            const errorLog = document.getElementById('errorLog');
+            try {
+                // Try to load the portfolio-admin.js script
+                const script = document.createElement('script');
+                script.src = 'js/portfolio-admin.js';
+                script.onload = function() {
+                    errorLog.innerHTML += '<br><span class="text-blue-600">✅ Portfolio Admin script loaded successfully</span>';
+                    
+                    // Check if PortfolioAdmin class exists
+                    if (typeof PortfolioAdmin !== 'undefined') {
+                        errorLog.innerHTML += '<br><span class="text-green-600">✅ PortfolioAdmin class is available</span>';
+                    } else {
+                        errorLog.innerHTML += '<br><span class="text-red-600">❌ PortfolioAdmin class not found</span>';
+                    }
+                };
+                script.onerror = function() {
+                    errorLog.innerHTML += '<br><span class="text-red-600">❌ Failed to load portfolio-admin.js</span>';
+                };
+                document.head.appendChild(script);
+            } catch (e) {
+                errorLog.innerHTML += '<br><span class="text-red-600">❌ Error: ' + e.message + '</span>';
+            }
+        }
+
+        function checkDOM() {
+            const errorLog = document.getElementById('errorLog');
+            const elementsToCheck = ['loginModal', 'adminInterface', 'loginForm', 'username', 'password'];
+            
+            errorLog.innerHTML += '<br><strong>DOM Elements Check:</strong>';
+            elementsToCheck.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    errorLog.innerHTML += `<br><span class="text-green-600">✅ ${id} found</span>`;
+                } else {
+                    errorLog.innerHTML += `<br><span class="text-red-600">❌ ${id} not found</span>`;
+                }
+            });
+        }
+
+        function openAdminPage() {
+            window.open('portfolio-admin.html', '_blank');
+        }
+
+        function clearAdminData() {
+            localStorage.removeItem('adminUser');
+            localStorage.removeItem('portfolioProjects');
+            localStorage.removeItem('portfolioSync');
+            alert('Admin session and data cleared');
+        }
+
+        // Test login form
+        document.getElementById('testLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('testUsername').value;
+            const password = document.getElementById('testPassword').value;
+            const result = document.getElementById('loginResult');
+            
+            result.classList.remove('hidden');
+            
+            if (username === 'admin' && password === 'password123') {
+                result.className = 'mt-4 p-3 rounded bg-green-100 text-green-800';
+                result.textContent = '✅ Credentials are correct!';
+                
+                // Test localStorage
+                try {
+                    const user = { username, loginTime: new Date().toISOString() };
+                    localStorage.setItem('adminUser', JSON.stringify(user));
+                    result.textContent += ' localStorage test passed.';
+                } catch (e) {
+                    result.textContent += ' ❌ localStorage test failed: ' + e.message;
+                }
+            } else {
+                result.className = 'mt-4 p-3 rounded bg-red-100 text-red-800';
+                result.textContent = '❌ Invalid credentials!';
+            }
+        });
+
+        // Initialize error log
+        updateErrorLog();
+    </script>
+</body>
+</html>
